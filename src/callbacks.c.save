@@ -1,0 +1,39 @@
+
+#ifdef HAVE_CONFIG_H
+#  include <config.h>
+#endif
+
+#include <gtk/gtk.h>
+
+#include "callbacks.h"
+#include "interface.h"
+#include "support.h"
+#include "services.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+
+
+
+void
+on_buttonAjouterService_clicked             (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+
+	GtkWidget* nom, *description, *empalacement;
+	informationsService services;
+
+	
+	//nom
+	nom=lookup_widget(objet_graphique, "entryNomService");
+	strcpy(services.entryNomService, gtk_entry_get_text(GTK_ENTRY(nom)));
+	//description
+	description=lookup_widget(objet_graphique, "entryDescriptionService");
+	strcpy(services.entryDescriptionService, gtk_entry_get_text(GTK_ENTRY(description)));
+	AjouterService("srvc.txt", services);
+
+	//emplacementCombo
+	emplacement= lookup_widget(objet_graphique, "comboboxemplacementService");
+	strcpy(services.comboboxemplacementService, gtk_combo_box_get_active_text(GTK_COMBO_BOX(emplacement)));
+		
+
