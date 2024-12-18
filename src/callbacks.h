@@ -39,3 +39,7 @@ on_checkbuttonValm_toggled             (GtkToggleButton *togglebutton,
 void
 on_buttonSupprimerService_clicked      (GtkWidget       *objet_graphique,
                                         gpointer         user_data);
+
+void
+on_buttonChercherService_clicked       (GtkWidget       *objet_graphique,
+                                        gpointer         user_data);

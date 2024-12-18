@@ -104,4 +104,25 @@ int supprimerService(char * fichier, int id)
 	return rr;
 }
 
+informationsService chercherService(char * fichier, int id, informationsService services)
+{
+
+	FILE * f=fopen(fichier, "r");
+	if(f!=NULL)
+	{
+		while(fscanf(f,"%d %s %s %s %d %d %d \n",&services.IdService, services.entryNomService, services.entryDescriptionService, services.comboboxentryemplacementService, &services.spinbuttonPS, &services.radiobuttoncat, &services.checkbuttonVal
+			)!=EOF)
+		{
+
+			if(services.IdService == id){
+
+			fclose(f);
+			return services;
+			}
+		}
+	}
+
+	
+}
+
 
