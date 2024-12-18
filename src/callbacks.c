@@ -80,3 +80,35 @@ on_checkbuttonVal_toggled              (GtkToggleButton *togglebutton,
 	if(gtk_toggle_button_get_active(togglebutton)) check=1;
 	else check=0;
 }
+
+void
+on_radiobuttonAgentm_toggled           (GtkToggleButton *togglebutton,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_radiobuttonAutom_toggled            (GtkToggleButton *togglebutton,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_buttonModifierService_clicked       (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_checkbuttonValm_toggled             (GtkToggleButton *togglebutton,
+                                        gpointer         user_data)
+{
+
+}
+

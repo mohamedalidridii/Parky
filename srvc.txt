@@ -1,2 +1,10 @@
-1 nom description Boumhal 4 1 1 
-2 nom description Boumhal 4 1 0 
+1 nom desc Tunis 5 2 
+2 nom desc Tunis 5 2 
+3 nom desc Boumhal 4 2 
+4 nom desc Boumhal 4 2 
+5 nom desc Boumhal 4 2 
+6 nom desc Ezzahra 4 2 
+7 nom desc Ezzahra 2 2 
+8 nom desc Ezzahra 2 2 
+9 nom desc Ezzahra 2 2 
+10 nom desc Tunis 9 1 
