@@ -1275,7 +1275,6 @@ create_Services (void)
   GtkWidget *label194;
   GtkWidget *label195;
   GtkWidget *label196;
-  GtkWidget *comboboxemplacementService;
   GtkWidget *button46;
   GtkWidget *alignment18;
   GtkWidget *hbox18;
@@ -1287,41 +1286,60 @@ create_Services (void)
   GtkWidget *image45;
   GtkWidget *label147;
   GtkWidget *label114;
-  GtkWidget *radiobuttonAuto;
-  GSList *radiobuttonAuto_group = NULL;
-  GtkWidget *radiobuttonAgent;
-  GSList *radiobuttonAgent_group = NULL;
-  GtkWidget *checkbuttonVal;
   GtkWidget *label197;
   GtkWidget *label198;
+  GtkWidget *comboboxemplacementService;
+  GtkWidget *checkbuttonVal;
+  GtkWidget *radiobuttonAgent;
+  GSList *radiobuttonAgent_group = NULL;
+  GtkWidget *radiobuttonAuto;
+  GSList *radiobuttonAuto_group = NULL;
   GtkWidget *label118;
   GtkWidget *fixed33;
   GtkWidget *fixed39;
-  GtkWidget *fixed40;
-  GtkObject *spinbutton31_adj;
-  GtkWidget *spinbutton31;
-  GtkWidget *entry25;
-  GtkWidget *entry26;
-  GtkWidget *label151;
-  GtkObject *spinbutton32_adj;
-  GtkWidget *spinbutton32;
-  GtkWidget *label152;
-  GtkWidget *label153;
-  GtkWidget *comboboxentry4;
-  GtkWidget *label154;
-  GtkWidget *label155;
-  GtkWidget *button56;
-  GtkWidget *alignment21;
-  GtkWidget *hbox21;
-  GtkWidget *image49;
-  GtkWidget *label157;
-  GtkWidget *label158;
-  GtkWidget *button55;
-  GtkWidget *alignment20;
-  GtkWidget *hbox20;
-  GtkWidget *image48;
-  GtkWidget *label156;
-  GtkWidget *label129;
+  GtkWidget *fixed51;
+  GtkWidget *clist8;
+  GtkWidget *label208;
+  GtkWidget *label209;
+  GtkWidget *label210;
+  GtkWidget *label211;
+  GtkWidget *label212;
+  GtkWidget *fixed52;
+  GtkWidget *entryNomServicem;
+  GtkWidget *entryDescriptionServicem;
+  GtkObject *spinbuttonPrixServicem_adj;
+  GtkWidget *spinbuttonPrixServicem;
+  GtkWidget *label199;
+  GtkWidget *label200;
+  GtkWidget *label201;
+  GtkWidget *label205;
+  GtkWidget *label206;
+  GtkWidget *label204;
+  GtkWidget *label207;
+  GtkWidget *comboboxemplacementServicem;
+  GtkWidget *checkbuttonValm;
+  GtkObject *spinbuttonid_adj;
+  GtkWidget *spinbuttonid;
+  GtkWidget *radiobuttonAgentm;
+  GSList *radiobuttonAgentm_group = NULL;
+  GtkWidget *radiobuttonAutom;
+  GSList *radiobuttonAutom_group = NULL;
+  GtkWidget *buttonModifierService;
+  GtkWidget *alignment31;
+  GtkWidget *hbox31;
+  GtkWidget *image59;
+  GtkWidget *label203;
+  GtkWidget *button65;
+  GtkWidget *alignment30;
+  GtkWidget *hbox30;
+  GtkWidget *image58;
+  GtkWidget *label202;
+  GtkWidget *buttonSupprimerService;
+  GtkWidget *alignment32;
+  GtkWidget *hbox32;
+  GtkWidget *image60;
+  GtkWidget *label213;
+  GtkWidget *modifier;
   GtkWidget *fixed35;
   GtkWidget *fixed36;
   GtkWidget *combo2;
@@ -1339,7 +1357,7 @@ create_Services (void)
   notebook3 = gtk_notebook_new ();
   gtk_widget_show (notebook3);
   gtk_fixed_put (GTK_FIXED (fixed28), notebook3, 0, 0);
-  gtk_widget_set_size_request (notebook3, 1336, 704);
+  gtk_widget_set_size_request (notebook3, 1304, 848);
 
   fixed29 = gtk_fixed_new ();
   gtk_widget_show (fixed29);
@@ -1511,14 +1529,6 @@ create_Services (void)
   gtk_fixed_put (GTK_FIXED (fixed32), label196, 80, 312);
   gtk_widget_set_size_request (label196, 104, 24);
 
-  comboboxemplacementService = gtk_combo_box_new_text ();
-  gtk_widget_show (comboboxemplacementService);
-  gtk_fixed_put (GTK_FIXED (fixed32), comboboxemplacementService, 88, 272);
-  gtk_widget_set_size_request (comboboxemplacementService, 188, 31);
-  gtk_combo_box_append_text (GTK_COMBO_BOX (comboboxemplacementService), _("Tunis"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (comboboxemplacementService), _("Boumhal"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (comboboxemplacementService), _("Ezzahra"));
-
   button46 = gtk_button_new ();
   gtk_widget_show (button46);
   gtk_fixed_put (GTK_FIXED (fixed32), button46, 96, 592);
@@ -1566,25 +1576,6 @@ create_Services (void)
   gtk_fixed_put (GTK_FIXED (fixed32), label114, 88, 128);
   gtk_widget_set_size_request (label114, 104, 24);
 
-  radiobuttonAuto = gtk_radio_button_new_with_mnemonic (NULL, _("Automatique"));
-  gtk_widget_show (radiobuttonAuto);
-  gtk_fixed_put (GTK_FIXED (fixed32), radiobuttonAuto, 88, 432);
-  gtk_widget_set_size_request (radiobuttonAuto, 120, 24);
-  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobuttonAuto), radiobuttonAuto_group);
-  radiobuttonAuto_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobuttonAuto));
-
-  radiobuttonAgent = gtk_radio_button_new_with_mnemonic (NULL, _("Manuel"));
-  gtk_widget_show (radiobuttonAgent);
-  gtk_fixed_put (GTK_FIXED (fixed32), radiobuttonAgent, 88, 408);
-  gtk_widget_set_size_request (radiobuttonAgent, 96, 24);
-  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobuttonAgent), radiobuttonAgent_group);
-  radiobuttonAgent_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobuttonAgent));
-
-  checkbuttonVal = gtk_check_button_new_with_mnemonic (_("En appuyant sur la checkbox vous\nconfirmez de faire cette action"));
-  gtk_widget_show (checkbuttonVal);
-  gtk_fixed_put (GTK_FIXED (fixed32), checkbuttonVal, 88, 496);
-  gtk_widget_set_size_request (checkbuttonVal, 264, 40);
-
   label197 = gtk_label_new (_("Type du service:"));
   gtk_widget_show (label197);
   gtk_fixed_put (GTK_FIXED (fixed32), label197, 88, 376);
@@ -1594,6 +1585,33 @@ create_Services (void)
   gtk_widget_show (label198);
   gtk_fixed_put (GTK_FIXED (fixed32), label198, 88, 480);
   gtk_widget_set_size_request (label198, 120, 24);
+
+  comboboxemplacementService = gtk_combo_box_new_text ();
+  gtk_widget_show (comboboxemplacementService);
+  gtk_fixed_put (GTK_FIXED (fixed32), comboboxemplacementService, 88, 272);
+  gtk_widget_set_size_request (comboboxemplacementService, 188, 31);
+  gtk_combo_box_append_text (GTK_COMBO_BOX (comboboxemplacementService), _("Tunis"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (comboboxemplacementService), _("Boumhal"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (comboboxemplacementService), _("Ezzahra"));
+
+  checkbuttonVal = gtk_check_button_new_with_mnemonic (_("En appuyant sur la checkbox vous\nconfirmez de faire cette action"));
+  gtk_widget_show (checkbuttonVal);
+  gtk_fixed_put (GTK_FIXED (fixed32), checkbuttonVal, 88, 496);
+  gtk_widget_set_size_request (checkbuttonVal, 264, 40);
+
+  radiobuttonAgent = gtk_radio_button_new_with_mnemonic (NULL, _("Manuel"));
+  gtk_widget_show (radiobuttonAgent);
+  gtk_fixed_put (GTK_FIXED (fixed32), radiobuttonAgent, 96, 408);
+  gtk_widget_set_size_request (radiobuttonAgent, 96, 24);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobuttonAgent), radiobuttonAgent_group);
+  radiobuttonAgent_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobuttonAgent));
+
+  radiobuttonAuto = gtk_radio_button_new_with_mnemonic (NULL, _("Automatique"));
+  gtk_widget_show (radiobuttonAuto);
+  gtk_fixed_put (GTK_FIXED (fixed32), radiobuttonAuto, 96, 432);
+  gtk_widget_set_size_request (radiobuttonAuto, 120, 24);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobuttonAuto), radiobuttonAuto_group);
+  radiobuttonAuto_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobuttonAuto));
 
   label118 = gtk_label_new (_("Ajouter"));
   gtk_widget_show (label118);
@@ -1608,115 +1626,199 @@ create_Services (void)
   gtk_fixed_put (GTK_FIXED (fixed33), fixed39, 0, 0);
   gtk_widget_set_size_request (fixed39, 0, 0);
 
-  fixed40 = gtk_fixed_new ();
-  gtk_widget_show (fixed40);
-  gtk_fixed_put (GTK_FIXED (fixed39), fixed40, 416, 0);
-  gtk_widget_set_size_request (fixed40, 0, 0);
+  fixed51 = gtk_fixed_new ();
+  gtk_widget_show (fixed51);
+  gtk_fixed_put (GTK_FIXED (fixed33), fixed51, 0, 0);
+  gtk_widget_set_size_request (fixed51, 0, 0);
 
-  spinbutton31_adj = gtk_adjustment_new (1, 1, 23, 1, 10, 10);
-  spinbutton31 = gtk_spin_button_new (GTK_ADJUSTMENT (spinbutton31_adj), 1, 0);
-  gtk_widget_show (spinbutton31);
-  gtk_fixed_put (GTK_FIXED (fixed40), spinbutton31, 264, 328);
-  gtk_widget_set_size_request (spinbutton31, 72, 24);
+  clist8 = gtk_clist_new (5);
+  gtk_widget_show (clist8);
+  gtk_fixed_put (GTK_FIXED (fixed51), clist8, 112, 64);
+  gtk_widget_set_size_request (clist8, 552, 560);
+  gtk_clist_set_column_width (GTK_CLIST (clist8), 0, 80);
+  gtk_clist_set_column_width (GTK_CLIST (clist8), 1, 96);
+  gtk_clist_set_column_width (GTK_CLIST (clist8), 2, 95);
+  gtk_clist_set_column_width (GTK_CLIST (clist8), 3, 108);
+  gtk_clist_set_column_width (GTK_CLIST (clist8), 4, 80);
+  gtk_clist_column_titles_show (GTK_CLIST (clist8));
 
-  entry25 = gtk_entry_new ();
-  gtk_widget_show (entry25);
-  gtk_fixed_put (GTK_FIXED (fixed40), entry25, 256, 160);
-  gtk_widget_set_size_request (entry25, 184, 24);
-  gtk_entry_set_invisible_char (GTK_ENTRY (entry25), 8226);
+  label208 = gtk_label_new (_("Id service"));
+  gtk_widget_show (label208);
+  gtk_clist_set_column_widget (GTK_CLIST (clist8), 0, label208);
 
-  entry26 = gtk_entry_new ();
-  gtk_widget_show (entry26);
-  gtk_fixed_put (GTK_FIXED (fixed40), entry26, 256, 208);
-  gtk_widget_set_size_request (entry26, 184, 24);
-  gtk_entry_set_invisible_char (GTK_ENTRY (entry26), 8226);
+  label209 = gtk_label_new (_("label139"));
+  gtk_widget_show (label209);
+  gtk_clist_set_column_widget (GTK_CLIST (clist8), 1, label209);
 
-  label151 = gtk_label_new (_("Nom services"));
-  gtk_widget_show (label151);
-  gtk_fixed_put (GTK_FIXED (fixed40), label151, 120, 160);
-  gtk_widget_set_size_request (label151, 104, 24);
+  label210 = gtk_label_new (_("label140"));
+  gtk_widget_show (label210);
+  gtk_clist_set_column_widget (GTK_CLIST (clist8), 2, label210);
 
-  spinbutton32_adj = gtk_adjustment_new (1, 1, 23, 1, 10, 10);
-  spinbutton32 = gtk_spin_button_new (GTK_ADJUSTMENT (spinbutton32_adj), 1, 0);
-  gtk_widget_show (spinbutton32);
-  gtk_fixed_put (GTK_FIXED (fixed40), spinbutton32, 264, 392);
-  gtk_widget_set_size_request (spinbutton32, 72, 24);
+  label211 = gtk_label_new (_("label141"));
+  gtk_widget_show (label211);
+  gtk_clist_set_column_widget (GTK_CLIST (clist8), 3, label211);
 
-  label152 = gtk_label_new (_("Heure \nde fermeture"));
-  gtk_widget_show (label152);
-  gtk_fixed_put (GTK_FIXED (fixed40), label152, 104, 384);
-  gtk_widget_set_size_request (label152, 136, 32);
+  label212 = gtk_label_new (_("label142"));
+  gtk_widget_show (label212);
+  gtk_clist_set_column_widget (GTK_CLIST (clist8), 4, label212);
 
-  label153 = gtk_label_new (_("Description"));
-  gtk_widget_show (label153);
-  gtk_fixed_put (GTK_FIXED (fixed40), label153, 112, 208);
-  gtk_widget_set_size_request (label153, 104, 24);
+  fixed52 = gtk_fixed_new ();
+  gtk_widget_show (fixed52);
+  gtk_fixed_put (GTK_FIXED (fixed51), fixed52, 832, 0);
+  gtk_widget_set_size_request (fixed52, 360, 600);
 
-  comboboxentry4 = gtk_combo_box_entry_new_text ();
-  gtk_widget_show (comboboxentry4);
-  gtk_fixed_put (GTK_FIXED (fixed40), comboboxentry4, 256, 264);
-  gtk_widget_set_size_request (comboboxentry4, 189, 29);
+  entryNomServicem = gtk_entry_new ();
+  gtk_widget_show (entryNomServicem);
+  gtk_fixed_put (GTK_FIXED (fixed52), entryNomServicem, 88, 152);
+  gtk_widget_set_size_request (entryNomServicem, 184, 24);
+  gtk_entry_set_invisible_char (GTK_ENTRY (entryNomServicem), 8226);
 
-  label154 = gtk_label_new (_("Heure \nd'ouverture"));
-  gtk_widget_show (label154);
-  gtk_fixed_put (GTK_FIXED (fixed40), label154, 96, 320);
-  gtk_widget_set_size_request (label154, 136, 32);
+  entryDescriptionServicem = gtk_entry_new ();
+  gtk_widget_show (entryDescriptionServicem);
+  gtk_fixed_put (GTK_FIXED (fixed52), entryDescriptionServicem, 88, 208);
+  gtk_widget_set_size_request (entryDescriptionServicem, 184, 24);
+  gtk_entry_set_invisible_char (GTK_ENTRY (entryDescriptionServicem), 8226);
 
-  label155 = gtk_label_new (_("Emplacement:"));
-  gtk_widget_show (label155);
-  gtk_fixed_put (GTK_FIXED (fixed40), label155, 120, 264);
-  gtk_widget_set_size_request (label155, 104, 24);
+  spinbuttonPrixServicem_adj = gtk_adjustment_new (1, 0, 23, 1, 10, 10);
+  spinbuttonPrixServicem = gtk_spin_button_new (GTK_ADJUSTMENT (spinbuttonPrixServicem_adj), 1, 0);
+  gtk_widget_show (spinbuttonPrixServicem);
+  gtk_fixed_put (GTK_FIXED (fixed52), spinbuttonPrixServicem, 88, 336);
+  gtk_widget_set_size_request (spinbuttonPrixServicem, 184, 24);
 
-  button56 = gtk_button_new ();
-  gtk_widget_show (button56);
-  gtk_fixed_put (GTK_FIXED (fixed40), button56, 192, 536);
-  gtk_widget_set_size_request (button56, 160, 32);
+  label199 = gtk_label_new (_("Description:"));
+  gtk_widget_show (label199);
+  gtk_fixed_put (GTK_FIXED (fixed52), label199, 80, 184);
+  gtk_widget_set_size_request (label199, 104, 24);
 
-  alignment21 = gtk_alignment_new (0.5, 0.5, 0, 0);
-  gtk_widget_show (alignment21);
-  gtk_container_add (GTK_CONTAINER (button56), alignment21);
+  label200 = gtk_label_new (_("Emplacement:"));
+  gtk_widget_show (label200);
+  gtk_fixed_put (GTK_FIXED (fixed52), label200, 88, 248);
+  gtk_widget_set_size_request (label200, 104, 24);
 
-  hbox21 = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (hbox21);
-  gtk_container_add (GTK_CONTAINER (alignment21), hbox21);
+  label201 = gtk_label_new (_("Prix service:"));
+  gtk_widget_show (label201);
+  gtk_fixed_put (GTK_FIXED (fixed52), label201, 80, 312);
+  gtk_widget_set_size_request (label201, 104, 24);
 
-  image49 = gtk_image_new_from_stock ("gtk-cancel", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image49);
-  gtk_box_pack_start (GTK_BOX (hbox21), image49, FALSE, FALSE, 0);
+  label205 = gtk_label_new (_("Type du service:"));
+  gtk_widget_show (label205);
+  gtk_fixed_put (GTK_FIXED (fixed52), label205, 88, 376);
+  gtk_widget_set_size_request (label205, 120, 24);
 
-  label157 = gtk_label_new_with_mnemonic (_("Annuler"));
-  gtk_widget_show (label157);
-  gtk_box_pack_start (GTK_BOX (hbox21), label157, FALSE, FALSE, 0);
+  label206 = gtk_label_new ("");
+  gtk_widget_show (label206);
+  gtk_fixed_put (GTK_FIXED (fixed52), label206, 88, 480);
+  gtk_widget_set_size_request (label206, 120, 24);
 
-  label158 = gtk_label_new (_("Modifier un service"));
-  gtk_widget_show (label158);
-  gtk_fixed_put (GTK_FIXED (fixed40), label158, 128, 72);
-  gtk_widget_set_size_request (label158, 248, 16);
+  label204 = gtk_label_new (_("Nom services:"));
+  gtk_widget_show (label204);
+  gtk_fixed_put (GTK_FIXED (fixed52), label204, 88, 128);
+  gtk_widget_set_size_request (label204, 104, 24);
 
-  button55 = gtk_button_new ();
-  gtk_widget_show (button55);
-  gtk_fixed_put (GTK_FIXED (fixed40), button55, 192, 488);
-  gtk_widget_set_size_request (button55, 160, 32);
+  label207 = gtk_label_new (_("Id service a modifier:"));
+  gtk_widget_show (label207);
+  gtk_fixed_put (GTK_FIXED (fixed52), label207, 88, 56);
+  gtk_widget_set_size_request (label207, 144, 24);
 
-  alignment20 = gtk_alignment_new (0.5, 0.5, 0, 0);
-  gtk_widget_show (alignment20);
-  gtk_container_add (GTK_CONTAINER (button55), alignment20);
+  comboboxemplacementServicem = gtk_combo_box_new_text ();
+  gtk_widget_show (comboboxemplacementServicem);
+  gtk_fixed_put (GTK_FIXED (fixed52), comboboxemplacementServicem, 88, 272);
+  gtk_widget_set_size_request (comboboxemplacementServicem, 188, 31);
+  gtk_combo_box_append_text (GTK_COMBO_BOX (comboboxemplacementServicem), _("Tunis"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (comboboxemplacementServicem), _("Boumhal"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (comboboxemplacementServicem), _("Ezzahra"));
 
-  hbox20 = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (hbox20);
-  gtk_container_add (GTK_CONTAINER (alignment20), hbox20);
+  checkbuttonValm = gtk_check_button_new_with_mnemonic (_("En appuyant sur la checkbox vous\nconfirmez de faire cette action"));
+  gtk_widget_show (checkbuttonValm);
+  gtk_fixed_put (GTK_FIXED (fixed52), checkbuttonValm, 88, 496);
+  gtk_widget_set_size_request (checkbuttonValm, 264, 40);
 
-  image48 = gtk_image_new_from_stock ("gtk-apply", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image48);
-  gtk_box_pack_start (GTK_BOX (hbox20), image48, FALSE, FALSE, 0);
+  spinbuttonid_adj = gtk_adjustment_new (1, 0, 23, 1, 10, 10);
+  spinbuttonid = gtk_spin_button_new (GTK_ADJUSTMENT (spinbuttonid_adj), 1, 0);
+  gtk_widget_show (spinbuttonid);
+  gtk_fixed_put (GTK_FIXED (fixed52), spinbuttonid, 88, 88);
+  gtk_widget_set_size_request (spinbuttonid, 184, 24);
 
-  label156 = gtk_label_new_with_mnemonic (_("Valider"));
-  gtk_widget_show (label156);
-  gtk_box_pack_start (GTK_BOX (hbox20), label156, FALSE, FALSE, 0);
+  radiobuttonAgentm = gtk_radio_button_new_with_mnemonic (NULL, _("Manuel"));
+  gtk_widget_show (radiobuttonAgentm);
+  gtk_fixed_put (GTK_FIXED (fixed52), radiobuttonAgentm, 88, 408);
+  gtk_widget_set_size_request (radiobuttonAgentm, 96, 24);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobuttonAgentm), radiobuttonAgentm_group);
+  radiobuttonAgentm_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobuttonAgentm));
 
-  label129 = gtk_label_new (_("Modifier"));
-  gtk_widget_show (label129);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook3), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook3), 2), label129);
+  radiobuttonAutom = gtk_radio_button_new_with_mnemonic (NULL, _("Automatique"));
+  gtk_widget_show (radiobuttonAutom);
+  gtk_fixed_put (GTK_FIXED (fixed52), radiobuttonAutom, 88, 432);
+  gtk_widget_set_size_request (radiobuttonAutom, 120, 24);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobuttonAutom), radiobuttonAutom_group);
+  radiobuttonAutom_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobuttonAutom));
+
+  buttonModifierService = gtk_button_new ();
+  gtk_widget_show (buttonModifierService);
+  gtk_fixed_put (GTK_FIXED (fixed52), buttonModifierService, 112, 560);
+  gtk_widget_set_size_request (buttonModifierService, 160, 32);
+
+  alignment31 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment31);
+  gtk_container_add (GTK_CONTAINER (buttonModifierService), alignment31);
+
+  hbox31 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox31);
+  gtk_container_add (GTK_CONTAINER (alignment31), hbox31);
+
+  image59 = gtk_image_new_from_stock ("gtk-apply", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image59);
+  gtk_box_pack_start (GTK_BOX (hbox31), image59, FALSE, FALSE, 0);
+
+  label203 = gtk_label_new_with_mnemonic (_("Modifier"));
+  gtk_widget_show (label203);
+  gtk_box_pack_start (GTK_BOX (hbox31), label203, FALSE, FALSE, 0);
+
+  button65 = gtk_button_new ();
+  gtk_widget_show (button65);
+  gtk_fixed_put (GTK_FIXED (fixed52), button65, 112, 600);
+  gtk_widget_set_size_request (button65, 160, 32);
+
+  alignment30 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment30);
+  gtk_container_add (GTK_CONTAINER (button65), alignment30);
+
+  hbox30 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox30);
+  gtk_container_add (GTK_CONTAINER (alignment30), hbox30);
+
+  image58 = gtk_image_new_from_stock ("gtk-cancel", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image58);
+  gtk_box_pack_start (GTK_BOX (hbox30), image58, FALSE, FALSE, 0);
+
+  label202 = gtk_label_new_with_mnemonic (_("Annuler"));
+  gtk_widget_show (label202);
+  gtk_box_pack_start (GTK_BOX (hbox30), label202, FALSE, FALSE, 0);
+
+  buttonSupprimerService = gtk_button_new ();
+  gtk_widget_show (buttonSupprimerService);
+  gtk_fixed_put (GTK_FIXED (fixed51), buttonSupprimerService, 944, 680);
+  gtk_widget_set_size_request (buttonSupprimerService, 160, 32);
+
+  alignment32 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment32);
+  gtk_container_add (GTK_CONTAINER (buttonSupprimerService), alignment32);
+
+  hbox32 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox32);
+  gtk_container_add (GTK_CONTAINER (alignment32), hbox32);
+
+  image60 = gtk_image_new_from_stock ("gtk-delete", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image60);
+  gtk_box_pack_start (GTK_BOX (hbox32), image60, FALSE, FALSE, 0);
+
+  label213 = gtk_label_new_with_mnemonic (_("Supprimer"));
+  gtk_widget_show (label213);
+  gtk_box_pack_start (GTK_BOX (hbox32), label213, FALSE, FALSE, 0);
+
+  modifier = gtk_label_new (_("Modifier"));
+  gtk_widget_show (modifier);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook3), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook3), 2), modifier);
 
   fixed35 = gtk_fixed_new ();
   gtk_widget_show (fixed35);
@@ -1751,14 +1853,29 @@ create_Services (void)
   g_signal_connect ((gpointer) buttonAjouterService, "clicked",
                     G_CALLBACK (on_buttonAjouterService_clicked),
                     NULL);
-  g_signal_connect ((gpointer) radiobuttonAuto, "toggled",
-                    G_CALLBACK (on_radiobuttonAuto_toggled),
+  g_signal_connect ((gpointer) checkbuttonVal, "toggled",
+                    G_CALLBACK (on_checkbuttonVal_toggled),
                     NULL);
   g_signal_connect ((gpointer) radiobuttonAgent, "toggled",
                     G_CALLBACK (on_radiobuttonAgent_toggled),
                     NULL);
-  g_signal_connect ((gpointer) checkbuttonVal, "toggled",
-                    G_CALLBACK (on_checkbuttonVal_toggled),
+  g_signal_connect ((gpointer) radiobuttonAuto, "toggled",
+                    G_CALLBACK (on_radiobuttonAuto_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) checkbuttonValm, "toggled",
+                    G_CALLBACK (on_checkbuttonValm_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobuttonAgentm, "toggled",
+                    G_CALLBACK (on_radiobuttonAgentm_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobuttonAutom, "toggled",
+                    G_CALLBACK (on_radiobuttonAutom_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) buttonModifierService, "clicked",
+                    G_CALLBACK (on_buttonModifierService_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) buttonSupprimerService, "clicked",
+                    G_CALLBACK (on_buttonSupprimerService_clicked),
                     NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
@@ -1801,7 +1918,6 @@ create_Services (void)
   GLADE_HOOKUP_OBJECT (Services, label194, "label194");
   GLADE_HOOKUP_OBJECT (Services, label195, "label195");
   GLADE_HOOKUP_OBJECT (Services, label196, "label196");
-  GLADE_HOOKUP_OBJECT (Services, comboboxemplacementService, "comboboxemplacementService");
   GLADE_HOOKUP_OBJECT (Services, button46, "button46");
   GLADE_HOOKUP_OBJECT (Services, alignment18, "alignment18");
   GLADE_HOOKUP_OBJECT (Services, hbox18, "hbox18");
@@ -1813,37 +1929,54 @@ create_Services (void)
   GLADE_HOOKUP_OBJECT (Services, image45, "image45");
   GLADE_HOOKUP_OBJECT (Services, label147, "label147");
   GLADE_HOOKUP_OBJECT (Services, label114, "label114");
-  GLADE_HOOKUP_OBJECT (Services, radiobuttonAuto, "radiobuttonAuto");
-  GLADE_HOOKUP_OBJECT (Services, radiobuttonAgent, "radiobuttonAgent");
-  GLADE_HOOKUP_OBJECT (Services, checkbuttonVal, "checkbuttonVal");
   GLADE_HOOKUP_OBJECT (Services, label197, "label197");
   GLADE_HOOKUP_OBJECT (Services, label198, "label198");
+  GLADE_HOOKUP_OBJECT (Services, comboboxemplacementService, "comboboxemplacementService");
+  GLADE_HOOKUP_OBJECT (Services, checkbuttonVal, "checkbuttonVal");
+  GLADE_HOOKUP_OBJECT (Services, radiobuttonAgent, "radiobuttonAgent");
+  GLADE_HOOKUP_OBJECT (Services, radiobuttonAuto, "radiobuttonAuto");
   GLADE_HOOKUP_OBJECT (Services, label118, "label118");
   GLADE_HOOKUP_OBJECT (Services, fixed33, "fixed33");
   GLADE_HOOKUP_OBJECT (Services, fixed39, "fixed39");
-  GLADE_HOOKUP_OBJECT (Services, fixed40, "fixed40");
-  GLADE_HOOKUP_OBJECT (Services, spinbutton31, "spinbutton31");
-  GLADE_HOOKUP_OBJECT (Services, entry25, "entry25");
-  GLADE_HOOKUP_OBJECT (Services, entry26, "entry26");
-  GLADE_HOOKUP_OBJECT (Services, label151, "label151");
-  GLADE_HOOKUP_OBJECT (Services, spinbutton32, "spinbutton32");
-  GLADE_HOOKUP_OBJECT (Services, label152, "label152");
-  GLADE_HOOKUP_OBJECT (Services, label153, "label153");
-  GLADE_HOOKUP_OBJECT (Services, comboboxentry4, "comboboxentry4");
-  GLADE_HOOKUP_OBJECT (Services, label154, "label154");
-  GLADE_HOOKUP_OBJECT (Services, label155, "label155");
-  GLADE_HOOKUP_OBJECT (Services, button56, "button56");
-  GLADE_HOOKUP_OBJECT (Services, alignment21, "alignment21");
-  GLADE_HOOKUP_OBJECT (Services, hbox21, "hbox21");
-  GLADE_HOOKUP_OBJECT (Services, image49, "image49");
-  GLADE_HOOKUP_OBJECT (Services, label157, "label157");
-  GLADE_HOOKUP_OBJECT (Services, label158, "label158");
-  GLADE_HOOKUP_OBJECT (Services, button55, "button55");
-  GLADE_HOOKUP_OBJECT (Services, alignment20, "alignment20");
-  GLADE_HOOKUP_OBJECT (Services, hbox20, "hbox20");
-  GLADE_HOOKUP_OBJECT (Services, image48, "image48");
-  GLADE_HOOKUP_OBJECT (Services, label156, "label156");
-  GLADE_HOOKUP_OBJECT (Services, label129, "label129");
+  GLADE_HOOKUP_OBJECT (Services, fixed51, "fixed51");
+  GLADE_HOOKUP_OBJECT (Services, clist8, "clist8");
+  GLADE_HOOKUP_OBJECT (Services, label208, "label208");
+  GLADE_HOOKUP_OBJECT (Services, label209, "label209");
+  GLADE_HOOKUP_OBJECT (Services, label210, "label210");
+  GLADE_HOOKUP_OBJECT (Services, label211, "label211");
+  GLADE_HOOKUP_OBJECT (Services, label212, "label212");
+  GLADE_HOOKUP_OBJECT (Services, fixed52, "fixed52");
+  GLADE_HOOKUP_OBJECT (Services, entryNomServicem, "entryNomServicem");
+  GLADE_HOOKUP_OBJECT (Services, entryDescriptionServicem, "entryDescriptionServicem");
+  GLADE_HOOKUP_OBJECT (Services, spinbuttonPrixServicem, "spinbuttonPrixServicem");
+  GLADE_HOOKUP_OBJECT (Services, label199, "label199");
+  GLADE_HOOKUP_OBJECT (Services, label200, "label200");
+  GLADE_HOOKUP_OBJECT (Services, label201, "label201");
+  GLADE_HOOKUP_OBJECT (Services, label205, "label205");
+  GLADE_HOOKUP_OBJECT (Services, label206, "label206");
+  GLADE_HOOKUP_OBJECT (Services, label204, "label204");
+  GLADE_HOOKUP_OBJECT (Services, label207, "label207");
+  GLADE_HOOKUP_OBJECT (Services, comboboxemplacementServicem, "comboboxemplacementServicem");
+  GLADE_HOOKUP_OBJECT (Services, checkbuttonValm, "checkbuttonValm");
+  GLADE_HOOKUP_OBJECT (Services, spinbuttonid, "spinbuttonid");
+  GLADE_HOOKUP_OBJECT (Services, radiobuttonAgentm, "radiobuttonAgentm");
+  GLADE_HOOKUP_OBJECT (Services, radiobuttonAutom, "radiobuttonAutom");
+  GLADE_HOOKUP_OBJECT (Services, buttonModifierService, "buttonModifierService");
+  GLADE_HOOKUP_OBJECT (Services, alignment31, "alignment31");
+  GLADE_HOOKUP_OBJECT (Services, hbox31, "hbox31");
+  GLADE_HOOKUP_OBJECT (Services, image59, "image59");
+  GLADE_HOOKUP_OBJECT (Services, label203, "label203");
+  GLADE_HOOKUP_OBJECT (Services, button65, "button65");
+  GLADE_HOOKUP_OBJECT (Services, alignment30, "alignment30");
+  GLADE_HOOKUP_OBJECT (Services, hbox30, "hbox30");
+  GLADE_HOOKUP_OBJECT (Services, image58, "image58");
+  GLADE_HOOKUP_OBJECT (Services, label202, "label202");
+  GLADE_HOOKUP_OBJECT (Services, buttonSupprimerService, "buttonSupprimerService");
+  GLADE_HOOKUP_OBJECT (Services, alignment32, "alignment32");
+  GLADE_HOOKUP_OBJECT (Services, hbox32, "hbox32");
+  GLADE_HOOKUP_OBJECT (Services, image60, "image60");
+  GLADE_HOOKUP_OBJECT (Services, label213, "label213");
+  GLADE_HOOKUP_OBJECT (Services, modifier, "modifier");
   GLADE_HOOKUP_OBJECT (Services, fixed35, "fixed35");
   GLADE_HOOKUP_OBJECT (Services, fixed36, "fixed36");
   GLADE_HOOKUP_OBJECT (Services, combo2, "combo2");

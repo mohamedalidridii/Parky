@@ -16,7 +16,6 @@
 
 int radio=1;
 int check=0;
-
 void
 on_buttonAjouterService_clicked             (GtkWidget       *objet_graphique,
                                         gpointer         user_data)
@@ -25,6 +24,7 @@ on_buttonAjouterService_clicked             (GtkWidget       *objet_graphique,
 	GtkWidget* nom, *description, *emplacement, *prix, *togglebutton1, *togglebutton2, *outputcheck;
 
 	informationsService services;
+	
 
 	
 	//nom
@@ -81,11 +81,57 @@ on_checkbuttonVal_toggled              (GtkToggleButton *togglebutton,
 	else check=0;
 }
 
+//button modifier
+
+void
+on_buttonModifierService_clicked       (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+	GtkWidget* nom, *description, *emplacement, *prix, *togglebutton1, *togglebutton2, *outputcheck, *id;
+
+	informationsService services;
+	
+	//id
+	id=lookup_widget(objet_graphique, "spinbuttonid");
+	int idm = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(id));
+
+	//nom
+	nom=lookup_widget(objet_graphique, "entryNomServicem");
+	strcpy(services.entryNomService, gtk_entry_get_text(GTK_ENTRY(nom)));
+	
+	//description
+	description=lookup_widget(objet_graphique, "entryDescriptionServicem");
+	strcpy(services.entryDescriptionService, gtk_entry_get_text(GTK_ENTRY(description)));
+	
+	//emplacementCombo
+	emplacement=lookup_widget(objet_graphique, "comboboxemplacementServicem");
+	strcpy(services.comboboxentryemplacementService, gtk_combo_box_get_active_text(GTK_COMBO_BOX(emplacement)));
+
+	//prixSpin
+	prix=lookup_widget(objet_graphique, "spinbuttonPrixServicem");
+	int price = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(prix));
+	services.spinbuttonPS = price;
+
+	//radiobutton
+	togglebutton1= lookup_widget(objet_graphique, "radiobuttonAgentm");
+        togglebutton2= lookup_widget(objet_graphique, "radiobuttonAutom");
+
+
+	if(radio==1) services.radiobuttoncat=1;
+	if(radio==2) services.radiobuttoncat=2;
+
+	//checkbox
+	
+	if(check==1) services.checkbuttonVal = 1;
+	else services.checkbuttonVal = 0;
+	modifierService( "srvc.txt", idm , services);
+}
+
 void
 on_radiobuttonAgentm_toggled           (GtkToggleButton *togglebutton,
                                         gpointer         user_data)
 {
-
+	if(gtk_toggle_button_get_active(togglebutton)) radio=1;
 }
 
 
@@ -93,22 +139,29 @@ void
 on_radiobuttonAutom_toggled            (GtkToggleButton *togglebutton,
                                         gpointer         user_data)
 {
-
+	if(gtk_toggle_button_get_active(togglebutton)) radio=1;
 }
-
-
-void
-on_buttonModifierService_clicked       (GtkButton       *button,
-                                        gpointer         user_data)
-{
-
-}
-
 
 void
 on_checkbuttonValm_toggled             (GtkToggleButton *togglebutton,
                                         gpointer         user_data)
 {
+	if(gtk_toggle_button_get_active(togglebutton)) check=1;
+	else check=0;
+}
 
+
+//Supprimer
+
+void
+on_buttonSupprimerService_clicked      (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+	//id
+	GtkWidget* id;
+	id=lookup_widget(objet_graphique, "spinbuttonid");
+	int idm = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(id));
+
+	supprimerService("srvc.text", idm);
 }
 

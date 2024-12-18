@@ -1,10 +1,6 @@
-1 nom desc Tunis 5 2 
-2 nom desc Tunis 5 2 
-3 nom desc Boumhal 4 2 
-4 nom desc Boumhal 4 2 
-5 nom desc Boumhal 4 2 
-6 nom desc Ezzahra 4 2 
-7 nom desc Ezzahra 2 2 
-8 nom desc Ezzahra 2 2 
-9 nom desc Ezzahra 2 2 
-10 nom desc Tunis 9 1 
+1 mike daktilo Ezzahra 2 1 1 
+2 lilo pampam Tunis 10 1 1 
+3 dodo daktilo Ezzahra 2 1 1 
+4 dali desc Boumhal 3 1 1 
+5 mike daktilo Ezzahra 2 1 1 
+6 nom descrip Tunis 3 1 1 

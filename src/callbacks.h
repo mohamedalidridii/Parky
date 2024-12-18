@@ -29,9 +29,13 @@ on_radiobuttonAutom_toggled            (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
-on_buttonModifierService_clicked       (GtkButton       *button,
+on_buttonModifierService_clicked       (GtkWidget       *objet_graphique,
                                         gpointer         user_data);
 
 void
 on_checkbuttonValm_toggled             (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_buttonSupprimerService_clicked      (GtkWidget       *objet_graphique,
                                         gpointer         user_data);
