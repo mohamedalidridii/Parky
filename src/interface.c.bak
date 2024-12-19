@@ -196,6 +196,9 @@ create_EspaceAdmin (void)
   GtkWidget *label22;
   GtkWidget *label9;
   GtkWidget *fixed58;
+  GtkWidget *buttonModifier;
+  GtkWidget *buttonSupprimer;
+  GtkWidget *labelMessage;
   GtkWidget *fixed59;
   GtkWidget *entryNom;
   GtkWidget *entryPrenom;
@@ -224,8 +227,7 @@ create_EspaceAdmin (void)
   GtkWidget *comboboxentryNationalite;
   GtkWidget *buttonSave;
   GtkWidget *buttonCancel;
-  GtkWidget *buttonModifier;
-  GtkWidget *buttonSupprimer;
+  GtkWidget *buttonAfficherAgent;
   GtkWidget *label231;
 
   EspaceAdmin = gtk_window_new (GTK_WINDOW_TOPLEVEL);
@@ -356,9 +358,25 @@ create_EspaceAdmin (void)
   gtk_widget_show (fixed58);
   gtk_container_add (GTK_CONTAINER (notebook1), fixed58);
 
+  buttonModifier = gtk_button_new_with_mnemonic (_("Modifier"));
+  gtk_widget_show (buttonModifier);
+  gtk_fixed_put (GTK_FIXED (fixed58), buttonModifier, 904, 440);
+  gtk_widget_set_size_request (buttonModifier, 136, 40);
+
+  buttonSupprimer = gtk_button_new_with_mnemonic (_("Supprimer"));
+  gtk_widget_show (buttonSupprimer);
+  gtk_fixed_put (GTK_FIXED (fixed58), buttonSupprimer, 1136, 440);
+  gtk_widget_set_size_request (buttonSupprimer, 136, 40);
+
+  labelMessage = gtk_label_new ("");
+  gtk_widget_show (labelMessage);
+  gtk_fixed_put (GTK_FIXED (fixed58), labelMessage, 280, 472);
+  gtk_widget_set_size_request (labelMessage, 57, 17);
+
   fixed59 = gtk_fixed_new ();
   gtk_widget_show (fixed59);
   gtk_fixed_put (GTK_FIXED (fixed58), fixed59, 0, 0);
+  gtk_widget_set_size_request (fixed59, 0, 0);
 
   entryNom = gtk_entry_new ();
   gtk_widget_show (entryNom);
@@ -489,20 +507,21 @@ create_EspaceAdmin (void)
   gtk_fixed_put (GTK_FIXED (fixed59), buttonCancel, 312, 400);
   gtk_widget_set_size_request (buttonCancel, 104, 32);
 
-  buttonModifier = gtk_button_new_with_mnemonic (_("Modifier"));
-  gtk_widget_show (buttonModifier);
-  gtk_fixed_put (GTK_FIXED (fixed58), buttonModifier, 904, 440);
-  gtk_widget_set_size_request (buttonModifier, 136, 40);
-
-  buttonSupprimer = gtk_button_new_with_mnemonic (_("Supprimer"));
-  gtk_widget_show (buttonSupprimer);
-  gtk_fixed_put (GTK_FIXED (fixed58), buttonSupprimer, 1136, 440);
-  gtk_widget_set_size_request (buttonSupprimer, 136, 40);
+  buttonAfficherAgent = gtk_button_new_with_mnemonic (_("Afficher"));
+  gtk_widget_show (buttonAfficherAgent);
+  gtk_fixed_put (GTK_FIXED (fixed59), buttonAfficherAgent, 744, 440);
+  gtk_widget_set_size_request (buttonAfficherAgent, 120, 40);
 
   label231 = gtk_label_new (_("Gestion des agents"));
   gtk_widget_show (label231);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 2), label231);
 
+  g_signal_connect ((gpointer) buttonModifier, "clicked",
+                    G_CALLBACK (on_buttonModifier_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) buttonSupprimer, "clicked",
+                    G_CALLBACK (on_buttonSupprimer_clicked),
+                    NULL);
   g_signal_connect ((gpointer) radiobuttonHomme, "toggled",
                     G_CALLBACK (on_radiobuttonHomme_toggled),
                     NULL);
@@ -518,11 +537,8 @@ create_EspaceAdmin (void)
   g_signal_connect ((gpointer) buttonCancel, "clicked",
                     G_CALLBACK (on_buttonCancel_clicked),
                     NULL);
-  g_signal_connect ((gpointer) buttonModifier, "clicked",
-                    G_CALLBACK (on_buttonModifier_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) buttonSupprimer, "clicked",
-                    G_CALLBACK (on_buttonSupprimer_clicked),
+  g_signal_connect ((gpointer) buttonAfficherAgent, "clicked",
+                    G_CALLBACK (on_buttonAfficherAgent_clicked),
                     NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
@@ -553,6 +569,9 @@ create_EspaceAdmin (void)
   GLADE_HOOKUP_OBJECT (EspaceAdmin, label22, "label22");
   GLADE_HOOKUP_OBJECT (EspaceAdmin, label9, "label9");
   GLADE_HOOKUP_OBJECT (EspaceAdmin, fixed58, "fixed58");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, buttonModifier, "buttonModifier");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, buttonSupprimer, "buttonSupprimer");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, labelMessage, "labelMessage");
   GLADE_HOOKUP_OBJECT (EspaceAdmin, fixed59, "fixed59");
   GLADE_HOOKUP_OBJECT (EspaceAdmin, entryNom, "entryNom");
   GLADE_HOOKUP_OBJECT (EspaceAdmin, entryPrenom, "entryPrenom");
@@ -577,8 +596,7 @@ create_EspaceAdmin (void)
   GLADE_HOOKUP_OBJECT (EspaceAdmin, comboboxentryNationalite, "comboboxentryNationalite");
   GLADE_HOOKUP_OBJECT (EspaceAdmin, buttonSave, "buttonSave");
   GLADE_HOOKUP_OBJECT (EspaceAdmin, buttonCancel, "buttonCancel");
-  GLADE_HOOKUP_OBJECT (EspaceAdmin, buttonModifier, "buttonModifier");
-  GLADE_HOOKUP_OBJECT (EspaceAdmin, buttonSupprimer, "buttonSupprimer");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, buttonAfficherAgent, "buttonAfficherAgent");
   GLADE_HOOKUP_OBJECT (EspaceAdmin, label231, "label231");
 
   return EspaceAdmin;

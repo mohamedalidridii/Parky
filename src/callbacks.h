@@ -65,13 +65,19 @@ on_buttonCancel_clicked                (GtkButton       *button,
                                         gpointer         user_data);
 
 void
-on_buttonModifier_clicked              (GtkButton       *button,
+on_buttonModifier_clicked              (GtkWidget       *objet_graphique,
                                         gpointer         user_data);
 
 void
-on_buttonSupprimer_clicked             (GtkButton       *button,
+on_buttonSupprimer_clicked             (GtkWidget       *objet_graphique,
                                         gpointer         user_data);
 
 void
 on_buttonAfficherAgent_clicked         (GtkWidget       *objet_graphique,
+                                        gpointer         user_data);
+
+void
+on_treeview2_row_activated             (GtkTreeView     *treeview,
+                                        GtkTreePath     *path,
+                                        GtkTreeViewColumn *column,
                                         gpointer         user_data);
