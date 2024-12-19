@@ -211,3 +211,59 @@ on_buttonChercherService_clicked       (GtkWidget       *objet_graphique,
 
 }
 
+
+void
+on_radiobuttonHomme_toggled            (GtkToggleButton *togglebutton,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_radiobuttonFemme_toggled            (GtkToggleButton *togglebutton,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_checkbuttonPreference_toggled       (GtkToggleButton *togglebutton,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_buttonSave_clicked                  (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_buttonCancel_clicked                (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_buttonModifier_clicked              (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_buttonSupprimer_clicked             (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
