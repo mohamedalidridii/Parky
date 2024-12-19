@@ -73,8 +73,7 @@ int modifierService( char * fichier, int id, informationsService nouv )
 }
 
 
-
-int supprimerService(char * fichier, int id)
+informationsService supprimerService(char * fichier, int id)
 {
 	int rr=0;
 	informationsService services;
@@ -85,10 +84,14 @@ int supprimerService(char * fichier, int id)
 		while(fscanf(f,"%d %s %s %s %d %d %d \n",&services.IdService, services.entryNomService, services.entryDescriptionService, services.comboboxentryemplacementService, &services.spinbuttonPS, &services.radiobuttoncat, &services.checkbuttonVal
 			)!=EOF)
 		{
-		if(services.IdService!= id)
-                fprintf(f2,"%d %s %s %s %d %d %d \n", services.IdService, services.entryNomService, services.entryDescriptionService, services.comboboxentryemplacementService, services.spinbuttonPS, services.radiobuttoncat, services.checkbuttonVal);
-		rr=1;
-		}
+			if(services.IdService!= id){
+                	fprintf(f2,"%d %s %s %s %d %d %d \n", services.IdService, services.entryNomService, services.entryDescriptionService, services.comboboxentryemplacementService, services.spinbuttonPS, services.radiobuttoncat, services.checkbuttonVal);
+			rr=1;
+			}
+			else{
+			 rr=0;
+			}
+		}	
 	}
 	if(EOF && services.IdService!= id){
 	printf("l'ID est incorrect");	
@@ -96,18 +99,25 @@ int supprimerService(char * fichier, int id)
 	else{
 	printf("The service succesffuly Deleted \n");	
 	}
-	
 	fclose(f);
 	fclose(f2);
 	remove(fichier);
 	rename("nouv.txt", fichier);
-	return rr;
+	return services;
 }
 
 informationsService chercherService(char * fichier, int id, informationsService services)
 {
 
+
 	FILE * f=fopen(fichier, "r");
+	    services.IdService = -1;
+	    strcpy(services.entryNomService, "N/A");
+	    strcpy(services.entryDescriptionService, "N/A");
+	    strcpy(services.comboboxentryemplacementService, "N/A");
+	    services.spinbuttonPS = 0;
+	    services.radiobuttoncat = 0;
+	    services.checkbuttonVal = 0;
 	if(f!=NULL)
 	{
 		while(fscanf(f,"%d %s %s %s %d %d %d \n",&services.IdService, services.entryNomService, services.entryDescriptionService, services.comboboxentryemplacementService, &services.spinbuttonPS, &services.radiobuttoncat, &services.checkbuttonVal
@@ -120,9 +130,9 @@ informationsService chercherService(char * fichier, int id, informationsService 
 			return services;
 			}
 		}
+	fclose(f);
 	}
 
-	
+	return services;
 }
-
 

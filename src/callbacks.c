@@ -16,6 +16,7 @@
 
 int radio=1;
 int check=0;
+
 void
 on_buttonAjouterService_clicked             (GtkWidget       *objet_graphique,
                                         gpointer         user_data)
@@ -24,17 +25,16 @@ on_buttonAjouterService_clicked             (GtkWidget       *objet_graphique,
 	GtkWidget* nom, *description, *emplacement, *prix, *togglebutton1, *togglebutton2, *outputcheck;
 
 	informationsService services;
-	
 
-	
+
 	//nom
 	nom=lookup_widget(objet_graphique, "entryNomService");
 	strcpy(services.entryNomService, gtk_entry_get_text(GTK_ENTRY(nom)));
-	
+
 	//description
 	description=lookup_widget(objet_graphique, "entryDescriptionService");
 	strcpy(services.entryDescriptionService, gtk_entry_get_text(GTK_ENTRY(description)));
-	
+
 	//emplacementCombo
 	emplacement=lookup_widget(objet_graphique, "comboboxemplacementService");
 	strcpy(services.comboboxentryemplacementService, gtk_combo_box_get_active_text(GTK_COMBO_BOX(emplacement)));
@@ -53,7 +53,7 @@ on_buttonAjouterService_clicked             (GtkWidget       *objet_graphique,
 	if(radio==2) services.radiobuttoncat=2;
 
 	//checkbox
-	
+
 	if(check==1) services.checkbuttonVal = 1;
 	else services.checkbuttonVal = 0;
 	AjouterService("srvc.txt", services);
@@ -150,7 +150,6 @@ on_checkbuttonValm_toggled             (GtkToggleButton *togglebutton,
 	else check=0;
 }
 
-
 //Supprimer
 
 void
@@ -170,22 +169,23 @@ void
 on_buttonChercherService_clicked       (GtkWidget       *objet_graphique,
                                         gpointer         user_data)
 {
-//id	
+
 	char idstr[20];
 	char spinbuttonstr[20];
 	char catstr[20];
+	int  idm;
 	GtkWidget*idService, * nom, *description, *emplacement, *prix, *cat, * id;
-	
+
 	informationsService services;
 
 
+	//id a chercher
+
 	id=lookup_widget(objet_graphique, "spinbuttonid");
-	int idm = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(id));
 
-	chercherService("srvc.text", idm, services);
+	idm = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(id));
 	
-
-
+	services=chercherService("srvc.text", idm, services);
 
 	idService=lookup_widget(objet_graphique, "labelIdService");
 	sprintf(idstr, "%d", services.IdService);
@@ -193,64 +193,21 @@ on_buttonChercherService_clicked       (GtkWidget       *objet_graphique,
 
 	nom=lookup_widget(objet_graphique, "labelNomService");
 
+	gtk_label_set_text(GTK_LABEL(nom), services.entryNomService);
+
 	description=lookup_widget(objet_graphique, "labelDescriptionService");
+	gtk_label_set_text(GTK_LABEL(description), services.entryDescriptionService);
 
 	emplacement=lookup_widget(objet_graphique, "labelEmplacementService");
+	gtk_label_set_text(GTK_LABEL(emplacement), services.comboboxentryemplacementService);
 
 	prix=lookup_widget(objet_graphique, "labelPrixService");
-	sprintf(spinbuttonstr, "%d", services.spinbuttonPS);
+	snprintf(spinbuttonstr, sizeof(spinbuttonstr), "%d", services.spinbuttonPS);
 	gtk_label_set_text(GTK_LABEL(prix), spinbuttonstr);
 
 	cat=lookup_widget(objet_graphique, "labelCategorieService");
-	sprintf(catstr, "%d", services.radiobuttoncat);
+	snprintf(catstr, sizeof(catstr), "%d", services.radiobuttoncat);
 	gtk_label_set_text(GTK_LABEL(cat), catstr);
 
-
-
-	gtk_label_set_text(GTK_LABEL(nom), services.entryNomService);
-	gtk_label_set_text(GTK_LABEL(description), services.entryDescriptionService);
-	gtk_label_set_text(GTK_LABEL(emplacement), services.comboboxentryemplacementService);
-	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
