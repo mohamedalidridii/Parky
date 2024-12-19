@@ -14,7 +14,7 @@ typedef struct{
 
 	void AjouterService(char * fichier, informationsService services);
 	int modifierService( char* fichier, int id, informationsService nouv );
-	informationsService supprimerService(char* fichier, int id);
+	int supprimerService(char* fichier, int id);
 	informationsService chercherService(char * fichier, int id, informationsService);
 	int AfficherService(char * fichier);
 	int affecterServiceCitoyen (char *fichierCitoyen, char *fichierServices, char *fichierAffectations,  int idServiceA, int idCitoyenA);
