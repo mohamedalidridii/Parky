@@ -1,0 +1,4 @@
+tesnim bouz F 0 0 0 48448484 6546546 0 0 Tunisien 1
+bouz tesnim F 4 4 1998 54654 654654 0 0 Français 1
+sedraoui marwen H 17 7 1993 5496140 50816132 0 0 Français 1
+aze azea H 1 1 1995 54 5454 0 0 Algérien 0

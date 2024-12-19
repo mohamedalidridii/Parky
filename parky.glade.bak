@@ -799,6 +799,68 @@
 		  <property name="visible">True</property>
 
 		  <child>
+		    <widget class="GtkButton" id="buttonModifier">
+		      <property name="width_request">136</property>
+		      <property name="height_request">40</property>
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="label" translatable="yes">Modifier</property>
+		      <property name="use_underline">True</property>
+		      <property name="relief">GTK_RELIEF_NORMAL</property>
+		      <property name="focus_on_click">True</property>
+		      <signal name="clicked" handler="on_buttonModifier_clicked" last_modification_time="Thu, 19 Dec 2024 15:27:54 GMT"/>
+		    </widget>
+		    <packing>
+		      <property name="x">904</property>
+		      <property name="y">440</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <widget class="GtkButton" id="buttonSupprimer">
+		      <property name="width_request">136</property>
+		      <property name="height_request">40</property>
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="label" translatable="yes">Supprimer</property>
+		      <property name="use_underline">True</property>
+		      <property name="relief">GTK_RELIEF_NORMAL</property>
+		      <property name="focus_on_click">True</property>
+		      <signal name="clicked" handler="on_buttonSupprimer_clicked" last_modification_time="Thu, 19 Dec 2024 15:28:02 GMT"/>
+		    </widget>
+		    <packing>
+		      <property name="x">1136</property>
+		      <property name="y">440</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <widget class="GtkLabel" id="labelMessage">
+		      <property name="width_request">57</property>
+		      <property name="height_request">17</property>
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes"></property>
+		      <property name="use_underline">False</property>
+		      <property name="use_markup">False</property>
+		      <property name="justify">GTK_JUSTIFY_LEFT</property>
+		      <property name="wrap">False</property>
+		      <property name="selectable">False</property>
+		      <property name="xalign">0.5</property>
+		      <property name="yalign">0.5</property>
+		      <property name="xpad">0</property>
+		      <property name="ypad">0</property>
+		      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		      <property name="width_chars">-1</property>
+		      <property name="single_line_mode">False</property>
+		      <property name="angle">0</property>
+		    </widget>
+		    <packing>
+		      <property name="x">280</property>
+		      <property name="y">472</property>
+		    </packing>
+		  </child>
+
+		  <child>
 		    <widget class="GtkFixed" id="fixed59">
 		      <property name="width_request">0</property>
 		      <property name="height_request">0</property>
@@ -1316,46 +1378,28 @@ Français
 			  <property name="y">400</property>
 			</packing>
 		      </child>
+
+		      <child>
+			<widget class="GtkButton" id="buttonAfficherAgent">
+			  <property name="width_request">120</property>
+			  <property name="height_request">40</property>
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">Afficher</property>
+			  <property name="use_underline">True</property>
+			  <property name="relief">GTK_RELIEF_NORMAL</property>
+			  <property name="focus_on_click">True</property>
+			  <signal name="clicked" handler="on_buttonAfficherAgent_clicked" last_modification_time="Thu, 19 Dec 2024 17:43:25 GMT"/>
+			</widget>
+			<packing>
+			  <property name="x">744</property>
+			  <property name="y">440</property>
+			</packing>
+		      </child>
 		    </widget>
 		    <packing>
 		      <property name="x">0</property>
 		      <property name="y">0</property>
-		    </packing>
-		  </child>
-
-		  <child>
-		    <widget class="GtkButton" id="buttonModifier">
-		      <property name="width_request">136</property>
-		      <property name="height_request">40</property>
-		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="label" translatable="yes">Modifier</property>
-		      <property name="use_underline">True</property>
-		      <property name="relief">GTK_RELIEF_NORMAL</property>
-		      <property name="focus_on_click">True</property>
-		      <signal name="clicked" handler="on_buttonModifier_clicked" last_modification_time="Thu, 19 Dec 2024 15:27:54 GMT"/>
-		    </widget>
-		    <packing>
-		      <property name="x">904</property>
-		      <property name="y">440</property>
-		    </packing>
-		  </child>
-
-		  <child>
-		    <widget class="GtkButton" id="buttonSupprimer">
-		      <property name="width_request">136</property>
-		      <property name="height_request">40</property>
-		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="label" translatable="yes">Supprimer</property>
-		      <property name="use_underline">True</property>
-		      <property name="relief">GTK_RELIEF_NORMAL</property>
-		      <property name="focus_on_click">True</property>
-		      <signal name="clicked" handler="on_buttonSupprimer_clicked" last_modification_time="Thu, 19 Dec 2024 15:28:02 GMT"/>
-		    </widget>
-		    <packing>
-		      <property name="x">1136</property>
-		      <property name="y">440</property>
 		    </packing>
 		  </child>
 		</widget>

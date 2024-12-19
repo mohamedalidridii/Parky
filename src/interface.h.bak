@@ -8,4 +8,3 @@ GtkWidget* create_EspaceAdmin (void);
 GtkWidget* create_Reservations (void);
 GtkWidget* create_Services (void);
 GtkWidget* create_citoyens (void);
-GtkWidget* create_window1 (void);

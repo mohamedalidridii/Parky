@@ -13,6 +13,15 @@
 #include <stdlib.h>
 
 
+#include "callbacks.h"
+#include "interface.h"
+#include "support.h"
+#include "agent.h"
+
+int selected = 1;
+int available = 0;
+
+
 
 int radio=1;
 int check=0;
@@ -216,6 +225,10 @@ void
 on_radiobuttonHomme_toggled            (GtkToggleButton *togglebutton,
                                         gpointer         user_data)
 {
+	if(gtk_toggle_button_get_active(GTK_RADIO_BUTTON(togglebutton)))
+	{
+	selected = 1;
+	}
 
 }
 
@@ -224,6 +237,10 @@ void
 on_radiobuttonFemme_toggled            (GtkToggleButton *togglebutton,
                                         gpointer         user_data)
 {
+	if(gtk_toggle_button_get_active(GTK_RADIO_BUTTON(togglebutton)))
+	{
+	selected = 2;
+	}
 
 }
 
@@ -232,22 +249,76 @@ void
 on_checkbuttonPreference_toggled       (GtkToggleButton *togglebutton,
                                         gpointer         user_data)
 {
-
+available = gtk_toggle_button_get_active(togglebutton) ? 1 : 0;
 }
 
 
 void
-on_buttonSave_clicked                  (GtkButton       *button,
+on_buttonSave_clicked                  (GtkWidget      *objet_graphique,
                                         gpointer         user_data)
 {
+	agent a;
+	GtkWidget *entryNom;
+	GtkWidget *entryPrenom;
+	GtkWidget *entryCin;
+	GtkWidget *entryNum;
+	GtkWidget *output;
+    GtkWidget *entryJour;
+    GtkWidget *entryMois;
+    GtkWidget *entryAnnee;
+    GtkWidget *comboboxentryNationalite;
+	GtkWidget *checkbuttonPreference;
 
+	entryNom = lookup_widget(objet_graphique,"entryNom");
+	entryPrenom = lookup_widget(objet_graphique,"entryPrenom");
+	entryCin = lookup_widget(objet_graphique,"entryCin");
+	entryNum = lookup_widget(objet_graphique,"entryNum");
+	output = lookup_widget(objet_graphique,"label29");
+    entryJour=lookup_widget(objet_graphique,"spinbuttonJour");
+    entryMois=lookup_widget(objet_graphique,"spinbuttonMois");
+    entryAnnee=lookup_widget(objet_graphique,"spinbuttonAnnee");
+    comboboxentryNationalite =lookup_widget(objet_graphique,"comboboxentryNationalite");
+    checkbuttonPreference=lookup_widget(objet_graphique,"checkbuttonPreference");
+
+            
+    
+
+	strcpy(a.nom,gtk_entry_get_text(GTK_ENTRY(entryNom)));
+	strcpy(a.prenom,gtk_entry_get_text(GTK_ENTRY(entryPrenom)));
+	a.cin = atoi(gtk_entry_get_text(GTK_ENTRY(entryCin)));
+	a.numeroTelephone =atoi(gtk_entry_get_text(GTK_ENTRY(entryNum)));
+	if(selected ==1 )
+	{
+	   strcpy(a.sexe,"H"); 
+	}	
+	else if(selected ==2){
+	   strcpy(a.sexe,"F");
+        }
+        a.jour=gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(entryJour));
+        a.mois=gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(entryMois));
+        a.annee=gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(entryAnnee));
+	    a.affecte =0;
+	    a.id_parking=0;
+	    a.prefNuit=available;
+   	
+	        g_print("%s %s %s %d %d %d %d %d %d %d %s %d\n",a.nom , a.prenom ,a.sexe,a.jour, a.mois , a.annee , a.cin , a.numeroTelephone,a.affecte,a.id_parking,a.nationalite,a.prefNuit);
+	strcpy(a.nationalite,gtk_combo_box_get_active_text(GTK_COMBO_BOX(comboboxentryNationalite)));
+
+	FILE * f=fopen("agent.txt", "a");
+    if(f!=NULL)
+    {
+        fprintf(f,"%s %s %s %d %d %d %d %d %d %d %s %d\n",a.nom , a.prenom ,a.sexe,a.jour, a.mois , a.annee , a.cin , a.numeroTelephone,a.affecte,a.id_parking,a.nationalite,a.prefNuit);
+        fclose(f);
+    };
 }
+
 
 
 void
 on_buttonCancel_clicked                (GtkButton       *button,
                                         gpointer         user_data)
 {
+	g_print("Cancel");
 
 }
 
@@ -265,5 +336,22 @@ on_buttonSupprimer_clicked             (GtkButton       *button,
                                         gpointer         user_data)
 {
 
+}
+
+
+void
+on_buttonAfficherAgent_clicked         (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+	GtkWidget *treeview2;
+
+	treeview2 = lookup_widget(objet_graphique,"treeview2");
+	 if (treeview2 != NULL) {
+        // Call the function to display the agents in the treeview
+		g_print("l9itha");
+        afficher_agent(treeview2);
+    } else {
+        g_print("treeview2 widget not found!\n");
+    }
 }
 

@@ -57,7 +57,7 @@ on_checkbuttonPreference_toggled       (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
-on_buttonSave_clicked                  (GtkButton       *button,
+on_buttonSave_clicked                  (GtkWidget       *objet_graphique,
                                         gpointer         user_data);
 
 void
@@ -70,4 +70,8 @@ on_buttonModifier_clicked              (GtkButton       *button,
 
 void
 on_buttonSupprimer_clicked             (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_buttonAfficherAgent_clicked         (GtkWidget       *objet_graphique,
                                         gpointer         user_data);
