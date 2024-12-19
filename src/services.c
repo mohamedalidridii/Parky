@@ -124,3 +124,46 @@ informationsService services;
 	return services;
 }
 
+int affecter_service( char * fichier, char * fichier1,  int id_res, int id_sc)
+{
+    int trs = 0;
+    int trp = 0;
+
+    reservation p; 
+    informationsService s;
+
+    FILE * f=fopen(fichier, "r");
+    FILE * f2=fopen(fichier1, "r");
+    FILE * f3=fopen("nouv.txt", "a");
+	printf("begging\n");
+    if(f!=NULL && f2!=NULL && f3!=NULL)
+    {
+	printf("after null\n");
+	while(fscanf(f,"%d %s %s %s %d %d %d\n",&s.IdService, s.entryNomService, s.entryDescriptionService, s.comboboxentryemplacementService, &s.spinbuttonPS, 			&s.radiobuttoncat, &s.checkbuttonVal)!=EOF)
+        {	printf("after while\n");
+		if(s.IdService == id_sc){
+			while(fscanf(f2,"%d %d %d %d %d %d %d %s %d \n ",&p.idReservation, &p.id_citoyen, &p.id_parking, &p.places_reservees, &p.jour, &p.mois, &p.annee, p.matricule_v, 			&p.service_complementaire)!=EOF){
+				printf("after while f\n");
+         			if(p.idReservation != id_res){
+					fprintf(f3,"%d %d %d %d %d %d %d %s %d\n",p.idReservation, p.id_citoyen, p.id_parking, p.places_reservees, p.jour, p.mois, p.annee, 						p.matricule_v, 	p.service_complementaire);
+					
+				}	
+				else{
+					printf("p.idReservation == id_res && s.IdService = id_sc is OK\n");
+
+					fprintf(f3,"%d %d %d %d %d %d %d %s %d\n",p.idReservation, p.id_citoyen, p.id_parking, p.places_reservees, p.jour, p.mois, p.annee, 							p.matricule_v, 	id_sc);	
+					
+				}
+	
+			}
+		}
+	}
+	fclose(f);
+    	fclose(f2); 
+	fclose(f3); 
+	remove(fichier1);
+	rename("nouv.txt", fichier1);
+    }
+	return 0;
+}
+

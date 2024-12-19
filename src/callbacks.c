@@ -185,7 +185,7 @@ on_buttonChercherService_clicked       (GtkWidget       *objet_graphique,
 
 	idm = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(id));
 	
-	services=chercherService("srvc.text", idm, services);
+	services=chercherService("srvc.text", idm);
 
 	idService=lookup_widget(objet_graphique, "labelIdService");
 	sprintf(idstr, "%d", services.IdService);
