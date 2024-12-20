@@ -191,16 +191,16 @@ void affecterParking(char * filename, int id_parking,int id) {
     FILE * f2=fopen("nouv.txt", "a");
     if(f!=NULL && f2!=NULL)
     {
-       while(fscanf(f,"%s %s %s %d %d %d %d %d %d %d %s \n",&nouveauA.nom , &nouveauA.prenom ,&nouveauA.sexe,&nouveauA.jour, &nouveauA.mois , &nouveauA.annee , &nouveauA.cin , &nouveauA.numeroTelephone,&nouveauA.affecte,&nouveauA.id_parking ,&nouveauA.nationalite)!=EOF)
+        while(fscanf(f,"%s %s %s %d %d %d %d %d %d %d %s %d \n",&nouveauA.nom , &nouveauA.prenom, &nouveauA.sexe , &nouveauA.jour, &nouveauA.mois , &nouveauA.annee , &nouveauA.cin , &nouveauA.numeroTelephone,&nouveauA.affecte,&nouveauA.id_parking,&nouveauA.nationalite,&nouveauA.prefNuit)!=EOF)
         {
             if(nouveauA.cin== id)
             {
-		nouveauA.affecte = 1;
-		nouveauA.id_parking = id_parking;
-                fprintf(f2,"%s %s %s %d %d %d %d %d %d %s \n",nouveauA.nom ,nouveauA.prenom ,nouveauA.sexe, nouveauA.jour, nouveauA.mois , nouveauA.annee , nouveauA.cin , nouveauA.numeroTelephone,nouveauA.affecte,nouveauA.id_parking,nouveauA.nationalite);
+                nouveauA.affecte = 1;
+                nouveauA.id_parking = id_parking;
+                fprintf(f2,"%s %s %s %d %d %d %d %d %d %d %s %d \n",nouveauA.nom , nouveauA.prenom ,nouveauA.sexe, nouveauA.jour, nouveauA.mois , nouveauA.annee , nouveauA.cin , nouveauA.numeroTelephone,nouveauA.affecte,nouveauA.id_parking,nouveauA.nationalite,nouveauA.prefNuit);
             }
             else
-                fprintf(f2,"%s %s %s %d %d %d %d %d %d %s \n",nouveauA.nom , nouveauA.prenom ,nouveauA.sexe, nouveauA.jour, nouveauA.mois , nouveauA.annee , nouveauA.cin , nouveauA.numeroTelephone,nouveauA.affecte,nouveauA.id_parking,nouveauA.nationalite);
+                fprintf(f2,"%s %s %s %d %d %d %d %d %d %d %s %d \n",nouveauA.nom , nouveauA.prenom, nouveauA.sexe , nouveauA.jour, nouveauA.mois , nouveauA.annee , nouveauA.cin , nouveauA.numeroTelephone,nouveauA.affecte,nouveauA.id_parking,nouveauA.nationalite,nouveauA.prefNuit);
 
         }
     }

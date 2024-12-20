@@ -197,8 +197,6 @@ create_EspaceAdmin (void)
   GtkWidget *label9;
   GtkWidget *fixed58;
   GtkWidget *labelMessage;
-  GtkWidget *buttonModifier;
-  GtkWidget *buttonSupprimer;
   GtkWidget *fixed59;
   GtkWidget *entryNom;
   GtkWidget *entryPrenom;
@@ -225,10 +223,43 @@ create_EspaceAdmin (void)
   GtkWidget *radiobuttonFemme;
   GtkWidget *checkbuttonPreference;
   GtkWidget *comboboxentryNationalite;
-  GtkWidget *buttonSave;
-  GtkWidget *buttonCancel;
-  GtkWidget *buttonAfficherAgent;
   GtkWidget *UpdateButton;
+  GtkWidget *alignment35;
+  GtkWidget *hbox34;
+  GtkWidget *image62;
+  GtkWidget *label241;
+  GtkWidget *buttonSave;
+  GtkWidget *alignment38;
+  GtkWidget *hbox37;
+  GtkWidget *image65;
+  GtkWidget *label244;
+  GtkWidget *buttonCancel;
+  GtkWidget *alignment39;
+  GtkWidget *hbox38;
+  GtkWidget *image66;
+  GtkWidget *label245;
+  GtkWidget *buttonAfficherAgent;
+  GtkWidget *alignment40;
+  GtkWidget *hbox39;
+  GtkWidget *image67;
+  GtkWidget *label246;
+  GtkWidget *buttonSupprimer;
+  GtkWidget *alignment36;
+  GtkWidget *hbox35;
+  GtkWidget *image63;
+  GtkWidget *label242;
+  GtkWidget *buttonModifier;
+  GtkWidget *alignment37;
+  GtkWidget *hbox36;
+  GtkWidget *image64;
+  GtkWidget *label243;
+  GtkWidget *quitter;
+  GtkWidget *alignment41;
+  GtkWidget *hbox40;
+  GtkWidget *image68;
+  GtkWidget *label247;
+  GtkWidget *inputAffecte;
+  GtkWidget *affecter;
   GtkWidget *label231;
 
   EspaceAdmin = gtk_window_new (GTK_WINDOW_TOPLEVEL);
@@ -364,16 +395,6 @@ create_EspaceAdmin (void)
   gtk_fixed_put (GTK_FIXED (fixed58), labelMessage, 280, 472);
   gtk_widget_set_size_request (labelMessage, 57, 17);
 
-  buttonModifier = gtk_button_new_with_mnemonic (_("Lier valeurs"));
-  gtk_widget_show (buttonModifier);
-  gtk_fixed_put (GTK_FIXED (fixed58), buttonModifier, 904, 440);
-  gtk_widget_set_size_request (buttonModifier, 136, 40);
-
-  buttonSupprimer = gtk_button_new_with_mnemonic (_("Supprimer"));
-  gtk_widget_show (buttonSupprimer);
-  gtk_fixed_put (GTK_FIXED (fixed58), buttonSupprimer, 1288, 440);
-  gtk_widget_set_size_request (buttonSupprimer, 136, 40);
-
   fixed59 = gtk_fixed_new ();
   gtk_widget_show (fixed59);
   gtk_fixed_put (GTK_FIXED (fixed58), fixed59, 0, 8);
@@ -465,6 +486,7 @@ create_EspaceAdmin (void)
   gtk_widget_show (treeview2);
   gtk_fixed_put (GTK_FIXED (fixed59), treeview2, 744, 80);
   gtk_widget_set_size_request (treeview2, 776, 312);
+  gtk_container_set_border_width (GTK_CONTAINER (treeview2), 2);
 
   label240 = gtk_label_new (_("Agents"));
   gtk_widget_show (label240);
@@ -498,36 +520,168 @@ create_EspaceAdmin (void)
   gtk_combo_box_append_text (GTK_COMBO_BOX (comboboxentryNationalite), _("Alg\303\251rien"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (comboboxentryNationalite), _("Fran\303\247ais"));
 
-  buttonSave = gtk_button_new_with_mnemonic (_("Enregistrer"));
+  UpdateButton = gtk_button_new ();
+  gtk_widget_show (UpdateButton);
+  gtk_fixed_put (GTK_FIXED (fixed59), UpdateButton, 1088, 432);
+  gtk_widget_set_size_request (UpdateButton, 136, 40);
+
+  alignment35 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment35);
+  gtk_container_add (GTK_CONTAINER (UpdateButton), alignment35);
+
+  hbox34 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox34);
+  gtk_container_add (GTK_CONTAINER (alignment35), hbox34);
+
+  image62 = gtk_image_new_from_stock ("gtk-refresh", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image62);
+  gtk_box_pack_start (GTK_BOX (hbox34), image62, FALSE, FALSE, 0);
+
+  label241 = gtk_label_new_with_mnemonic (_("Modifier"));
+  gtk_widget_show (label241);
+  gtk_box_pack_start (GTK_BOX (hbox34), label241, FALSE, FALSE, 0);
+
+  buttonSave = gtk_button_new ();
   gtk_widget_show (buttonSave);
   gtk_fixed_put (GTK_FIXED (fixed59), buttonSave, 120, 400);
   gtk_widget_set_size_request (buttonSave, 104, 32);
 
-  buttonCancel = gtk_button_new_with_mnemonic (_("Annuler"));
+  alignment38 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment38);
+  gtk_container_add (GTK_CONTAINER (buttonSave), alignment38);
+
+  hbox37 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox37);
+  gtk_container_add (GTK_CONTAINER (alignment38), hbox37);
+
+  image65 = gtk_image_new_from_stock ("gtk-add", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image65);
+  gtk_box_pack_start (GTK_BOX (hbox37), image65, FALSE, FALSE, 0);
+
+  label244 = gtk_label_new_with_mnemonic (_("Enregistrer"));
+  gtk_widget_show (label244);
+  gtk_box_pack_start (GTK_BOX (hbox37), label244, FALSE, FALSE, 0);
+
+  buttonCancel = gtk_button_new ();
   gtk_widget_show (buttonCancel);
   gtk_fixed_put (GTK_FIXED (fixed59), buttonCancel, 312, 400);
   gtk_widget_set_size_request (buttonCancel, 104, 32);
 
-  buttonAfficherAgent = gtk_button_new_with_mnemonic (_("Afficher"));
+  alignment39 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment39);
+  gtk_container_add (GTK_CONTAINER (buttonCancel), alignment39);
+
+  hbox38 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox38);
+  gtk_container_add (GTK_CONTAINER (alignment39), hbox38);
+
+  image66 = gtk_image_new_from_stock ("gtk-cancel", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image66);
+  gtk_box_pack_start (GTK_BOX (hbox38), image66, FALSE, FALSE, 0);
+
+  label245 = gtk_label_new_with_mnemonic (_("Annuler"));
+  gtk_widget_show (label245);
+  gtk_box_pack_start (GTK_BOX (hbox38), label245, FALSE, FALSE, 0);
+
+  buttonAfficherAgent = gtk_button_new ();
   gtk_widget_show (buttonAfficherAgent);
   gtk_fixed_put (GTK_FIXED (fixed59), buttonAfficherAgent, 752, 432);
   gtk_widget_set_size_request (buttonAfficherAgent, 120, 40);
 
-  UpdateButton = gtk_button_new_with_mnemonic (_("Modifier"));
-  gtk_widget_show (UpdateButton);
-  gtk_fixed_put (GTK_FIXED (fixed59), UpdateButton, 1088, 432);
-  gtk_widget_set_size_request (UpdateButton, 136, 40);
+  alignment40 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment40);
+  gtk_container_add (GTK_CONTAINER (buttonAfficherAgent), alignment40);
+
+  hbox39 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox39);
+  gtk_container_add (GTK_CONTAINER (alignment40), hbox39);
+
+  image67 = gtk_image_new_from_stock ("gtk-index", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image67);
+  gtk_box_pack_start (GTK_BOX (hbox39), image67, FALSE, FALSE, 0);
+
+  label246 = gtk_label_new_with_mnemonic (_("Afficher"));
+  gtk_widget_show (label246);
+  gtk_box_pack_start (GTK_BOX (hbox39), label246, FALSE, FALSE, 0);
+
+  buttonSupprimer = gtk_button_new ();
+  gtk_widget_show (buttonSupprimer);
+  gtk_fixed_put (GTK_FIXED (fixed58), buttonSupprimer, 1288, 440);
+  gtk_widget_set_size_request (buttonSupprimer, 136, 40);
+
+  alignment36 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment36);
+  gtk_container_add (GTK_CONTAINER (buttonSupprimer), alignment36);
+
+  hbox35 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox35);
+  gtk_container_add (GTK_CONTAINER (alignment36), hbox35);
+
+  image63 = gtk_image_new_from_stock ("gtk-delete", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image63);
+  gtk_box_pack_start (GTK_BOX (hbox35), image63, FALSE, FALSE, 0);
+
+  label242 = gtk_label_new_with_mnemonic (_("Supprimer"));
+  gtk_widget_show (label242);
+  gtk_box_pack_start (GTK_BOX (hbox35), label242, FALSE, FALSE, 0);
+
+  buttonModifier = gtk_button_new ();
+  gtk_widget_show (buttonModifier);
+  gtk_fixed_put (GTK_FIXED (fixed58), buttonModifier, 904, 440);
+  gtk_widget_set_size_request (buttonModifier, 136, 40);
+
+  alignment37 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment37);
+  gtk_container_add (GTK_CONTAINER (buttonModifier), alignment37);
+
+  hbox36 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox36);
+  gtk_container_add (GTK_CONTAINER (alignment37), hbox36);
+
+  image64 = gtk_image_new_from_stock ("gtk-apply", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image64);
+  gtk_box_pack_start (GTK_BOX (hbox36), image64, FALSE, FALSE, 0);
+
+  label243 = gtk_label_new_with_mnemonic (_("Lier valeurs"));
+  gtk_widget_show (label243);
+  gtk_box_pack_start (GTK_BOX (hbox36), label243, FALSE, FALSE, 0);
+
+  quitter = gtk_button_new ();
+  gtk_widget_show (quitter);
+  gtk_fixed_put (GTK_FIXED (fixed58), quitter, 1448, 568);
+  gtk_widget_set_size_request (quitter, 96, 32);
+
+  alignment41 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment41);
+  gtk_container_add (GTK_CONTAINER (quitter), alignment41);
+
+  hbox40 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox40);
+  gtk_container_add (GTK_CONTAINER (alignment41), hbox40);
+
+  image68 = gtk_image_new_from_stock ("gtk-quit", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image68);
+  gtk_box_pack_start (GTK_BOX (hbox40), image68, FALSE, FALSE, 0);
+
+  label247 = gtk_label_new_with_mnemonic (_("Quitter"));
+  gtk_widget_show (label247);
+  gtk_box_pack_start (GTK_BOX (hbox40), label247, FALSE, FALSE, 0);
+
+  inputAffecte = gtk_entry_new ();
+  gtk_widget_show (inputAffecte);
+  gtk_fixed_put (GTK_FIXED (fixed58), inputAffecte, 256, 544);
+  gtk_widget_set_size_request (inputAffecte, 160, 27);
+  gtk_entry_set_invisible_char (GTK_ENTRY (inputAffecte), 8226);
+
+  affecter = gtk_button_new_with_mnemonic (_("affecter"));
+  gtk_widget_show (affecter);
+  gtk_fixed_put (GTK_FIXED (fixed58), affecter, 472, 544);
+  gtk_widget_set_size_request (affecter, 104, 32);
 
   label231 = gtk_label_new (_("Gestion des agents"));
   gtk_widget_show (label231);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 2), label231);
 
-  g_signal_connect ((gpointer) buttonModifier, "clicked",
-                    G_CALLBACK (on_buttonModifier_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) buttonSupprimer, "clicked",
-                    G_CALLBACK (on_buttonSupprimer_clicked),
-                    NULL);
   g_signal_connect ((gpointer) treeview2, "row_activated",
                     G_CALLBACK (on_treeview2_row_activated),
                     NULL);
@@ -540,6 +694,9 @@ create_EspaceAdmin (void)
   g_signal_connect ((gpointer) checkbuttonPreference, "toggled",
                     G_CALLBACK (on_checkbuttonPreference_toggled),
                     NULL);
+  g_signal_connect ((gpointer) UpdateButton, "clicked",
+                    G_CALLBACK (on_UpdateButton_clicked),
+                    NULL);
   g_signal_connect ((gpointer) buttonSave, "clicked",
                     G_CALLBACK (on_buttonSave_clicked),
                     NULL);
@@ -549,8 +706,17 @@ create_EspaceAdmin (void)
   g_signal_connect ((gpointer) buttonAfficherAgent, "clicked",
                     G_CALLBACK (on_buttonAfficherAgent_clicked),
                     NULL);
-  g_signal_connect ((gpointer) UpdateButton, "clicked",
-                    G_CALLBACK (on_UpdateButton_clicked),
+  g_signal_connect ((gpointer) buttonSupprimer, "clicked",
+                    G_CALLBACK (on_buttonSupprimer_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) buttonModifier, "clicked",
+                    G_CALLBACK (on_buttonModifier_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) quitter, "clicked",
+                    G_CALLBACK (on_quitter_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) affecter, "clicked",
+                    G_CALLBACK (on_affecter_clicked),
                     NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
@@ -582,8 +748,6 @@ create_EspaceAdmin (void)
   GLADE_HOOKUP_OBJECT (EspaceAdmin, label9, "label9");
   GLADE_HOOKUP_OBJECT (EspaceAdmin, fixed58, "fixed58");
   GLADE_HOOKUP_OBJECT (EspaceAdmin, labelMessage, "labelMessage");
-  GLADE_HOOKUP_OBJECT (EspaceAdmin, buttonModifier, "buttonModifier");
-  GLADE_HOOKUP_OBJECT (EspaceAdmin, buttonSupprimer, "buttonSupprimer");
   GLADE_HOOKUP_OBJECT (EspaceAdmin, fixed59, "fixed59");
   GLADE_HOOKUP_OBJECT (EspaceAdmin, entryNom, "entryNom");
   GLADE_HOOKUP_OBJECT (EspaceAdmin, entryPrenom, "entryPrenom");
@@ -606,10 +770,43 @@ create_EspaceAdmin (void)
   GLADE_HOOKUP_OBJECT (EspaceAdmin, radiobuttonFemme, "radiobuttonFemme");
   GLADE_HOOKUP_OBJECT (EspaceAdmin, checkbuttonPreference, "checkbuttonPreference");
   GLADE_HOOKUP_OBJECT (EspaceAdmin, comboboxentryNationalite, "comboboxentryNationalite");
-  GLADE_HOOKUP_OBJECT (EspaceAdmin, buttonSave, "buttonSave");
-  GLADE_HOOKUP_OBJECT (EspaceAdmin, buttonCancel, "buttonCancel");
-  GLADE_HOOKUP_OBJECT (EspaceAdmin, buttonAfficherAgent, "buttonAfficherAgent");
   GLADE_HOOKUP_OBJECT (EspaceAdmin, UpdateButton, "UpdateButton");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, alignment35, "alignment35");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, hbox34, "hbox34");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, image62, "image62");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, label241, "label241");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, buttonSave, "buttonSave");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, alignment38, "alignment38");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, hbox37, "hbox37");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, image65, "image65");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, label244, "label244");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, buttonCancel, "buttonCancel");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, alignment39, "alignment39");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, hbox38, "hbox38");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, image66, "image66");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, label245, "label245");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, buttonAfficherAgent, "buttonAfficherAgent");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, alignment40, "alignment40");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, hbox39, "hbox39");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, image67, "image67");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, label246, "label246");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, buttonSupprimer, "buttonSupprimer");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, alignment36, "alignment36");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, hbox35, "hbox35");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, image63, "image63");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, label242, "label242");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, buttonModifier, "buttonModifier");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, alignment37, "alignment37");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, hbox36, "hbox36");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, image64, "image64");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, label243, "label243");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, quitter, "quitter");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, alignment41, "alignment41");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, hbox40, "hbox40");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, image68, "image68");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, label247, "label247");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, inputAffecte, "inputAffecte");
+  GLADE_HOOKUP_OBJECT (EspaceAdmin, affecter, "affecter");
   GLADE_HOOKUP_OBJECT (EspaceAdmin, label231, "label231");
 
   return EspaceAdmin;

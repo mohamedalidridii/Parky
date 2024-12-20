@@ -328,11 +328,75 @@ on_buttonSave_clicked                  (GtkWidget      *objet_graphique,
 
 
 void
-on_buttonCancel_clicked                (GtkButton       *button,
+on_buttonCancel_clicked                (GtkWidget      *objet_graphique,
                                         gpointer         user_data)
     {
-        g_print("Cancel");
+        GtkWidget *entryNom, *entryPrenom, *entryCin, *entryNum;
+    GtkWidget *entryJour, *entryMois, *entryAnnee, *comboboxentryNationalite, *checkbuttonPreference;
 
+    // Initialisation des widgets
+    entryNom = lookup_widget(objet_graphique, "entryNom");
+    if (!entryNom) {
+        g_print("Error: Widget entryNom not found\n");
+        return;
+    }
+
+    entryPrenom = lookup_widget(objet_graphique, "entryPrenom");
+    if (!entryPrenom) {
+        g_print("Error: Widget entryPrenom not found\n");
+        return;
+    }
+
+    entryCin = lookup_widget(objet_graphique, "entryCin");
+    if (!entryCin) {
+        g_print("Error: Widget entryCin not found\n");
+        return;
+    }
+
+    entryNum = lookup_widget(objet_graphique, "entryNum");
+    if (!entryNum) {
+        g_print("Error: Widget entryNum not found\n");
+        return;
+    }
+
+    entryJour = lookup_widget(objet_graphique, "spinbuttonJour");
+    if (!entryJour) {
+        g_print("Error: Widget spinbuttonJour not found\n");
+        return;
+    }
+
+    entryMois = lookup_widget(objet_graphique, "spinbuttonMois");
+    if (!entryMois) {
+        g_print("Error: Widget spinbuttonMois not found\n");
+        return;
+    }
+
+    entryAnnee = lookup_widget(objet_graphique, "spinbuttonAnnee");
+    if (!entryAnnee) {
+        g_print("Error: Widget spinbuttonAnnee not found\n");
+        return;
+    }
+
+    comboboxentryNationalite = lookup_widget(objet_graphique, "comboboxentryNationalite");
+    if (!comboboxentryNationalite) {
+        g_print("Error: Widget comboboxentryNationalite not found\n");
+        return;
+    }
+
+    checkbuttonPreference = lookup_widget(objet_graphique, "checkbuttonPreference");
+    if (!checkbuttonPreference) {
+        g_print("Error: Widget checkbuttonPreference not found\n");
+        return;
+    }
+
+
+	gtk_entry_set_text(GTK_ENTRY(entryNom), "");
+	gtk_entry_set_text(GTK_ENTRY(entryPrenom), "");
+    gtk_entry_set_text(GTK_ENTRY(entryCin), "");
+    gtk_entry_set_text(GTK_ENTRY(entryNum), "");
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(entryJour), 1);
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(entryMois), 1);
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(entryAnnee), 1990);
     }
 
 
@@ -595,5 +659,26 @@ on_UpdateButton_clicked                (GtkWidget       *objet_graphique,
             g_print("treeview2 widget not found!\n");
         }
         }
+}
+
+
+void
+on_quitter_clicked                     (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+    gtk_main_quit();
+}
+
+
+void
+on_affecter_clicked                    (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+    GtkWidget *affecter;
+    affecter = lookup_widget(objet_graphique,"inputAffecte");
+    
+    int id_parking = atoi(gtk_entry_get_text(GTK_ENTRY(affecter)));
+    affecterParking("agent.txt",id_parking,rowSelected.cin);
+
 }
 

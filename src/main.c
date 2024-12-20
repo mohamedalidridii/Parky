@@ -38,18 +38,18 @@ main (int argc, char *argv[])
    * (except popup menus), just so that you see something after building
    * the project. Delete any components that you don't want shown initially.
    */
-  Connexion = create_Connexion ();
-  gtk_widget_show (Connexion);
-  MonProfile = create_MonProfile ();
-  gtk_widget_show (MonProfile);
+  // Connexion = create_Connexion ();
+  // gtk_widget_show (Connexion);
+  // MonProfile = create_MonProfile ();
+  // gtk_widget_show (MonProfile);
   EspaceAdmin = create_EspaceAdmin ();
   gtk_widget_show (EspaceAdmin);
-  Reservations = create_Reservations ();
-  gtk_widget_show (Reservations);
-  Services = create_Services ();
-  gtk_widget_show (Services);
-  citoyens = create_citoyens ();
-  gtk_widget_show (citoyens);
+  // Reservations = create_Reservations ();
+  // gtk_widget_show (Reservations);
+  // Services = create_Services ();
+  // gtk_widget_show (Services);
+  // citoyens = create_citoyens ();
+  // gtk_widget_show (citoyens);
 
   gtk_main ();
   return 0;

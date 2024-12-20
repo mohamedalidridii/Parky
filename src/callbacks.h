@@ -61,7 +61,7 @@ on_buttonSave_clicked                  (GtkWidget       *objet_graphique,
                                         gpointer         user_data);
 
 void
-on_buttonCancel_clicked                (GtkButton       *button,
+on_buttonCancel_clicked                (GtkWidget      *objet_graphique,
                                         gpointer         user_data);
 
 void
@@ -84,4 +84,12 @@ on_treeview2_row_activated             (GtkTreeView     *treeview,
 
 void
 on_UpdateButton_clicked                (GtkWidget       *objet_graphique,
+                                        gpointer         user_data);
+
+void
+on_quitter_clicked                     (GtkWidget       *objet_graphique,
+                                        gpointer         user_data);
+
+void
+on_affecter_clicked                    (GtkWidget       *objet_graphique,
                                         gpointer         user_data);
