@@ -522,6 +522,9 @@ create_EspaceAdmin (void)
   g_signal_connect ((gpointer) buttonSupprimer, "clicked",
                     G_CALLBACK (on_buttonSupprimer_clicked),
                     NULL);
+  g_signal_connect ((gpointer) treeview2, "row_activated",
+                    G_CALLBACK (on_treeview2_row_activated),
+                    NULL);
   g_signal_connect ((gpointer) radiobuttonHomme, "toggled",
                     G_CALLBACK (on_radiobuttonHomme_toggled),
                     NULL);

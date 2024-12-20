@@ -81,3 +81,7 @@ on_treeview2_row_activated             (GtkTreeView     *treeview,
                                         GtkTreePath     *path,
                                         GtkTreeViewColumn *column,
                                         gpointer         user_data);
+
+void
+on_UpdateButton_clicked                (GtkWidget       *objet_graphique,
+                                        gpointer         user_data);

@@ -16,7 +16,7 @@ typedef struct {
 }agent;
 void saisir (agent *a);
 void AjouterAgent (char *fichier, agent a);
-int modifier( char *fichier, int id );
+int modifier( char *fichier, int id,agent b);
 void supprimer(char *fichier, int id );
 agent chercher(char *fichier, int id);
 void afficher_agent(GtkWidget *liste);

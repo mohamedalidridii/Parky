@@ -89,7 +89,7 @@ void setup_treeview_columns(GtkWidget *treeview) {
     gtk_tree_view_append_column(GTK_TREE_VIEW(treeview), column);
 
     // Column for "Sexe"
-    renderer = gtk_cell_renderer_text_new();
+     renderer = gtk_cell_renderer_text_new();
     column = gtk_tree_view_column_new_with_attributes("Sexe", renderer, "text", SEXE, NULL);
     gtk_tree_view_append_column(GTK_TREE_VIEW(treeview), column);
 
@@ -99,10 +99,11 @@ void setup_treeview_columns(GtkWidget *treeview) {
     gtk_tree_view_append_column(GTK_TREE_VIEW(treeview), column);
 
     // Column for "Affecte"
-    renderer = gtk_cell_renderer_text_new();
+   renderer = gtk_cell_renderer_text_new();
     column = gtk_tree_view_column_new_with_attributes("Affecte", renderer, "text", AFFECTE, NULL);
     gtk_tree_view_append_column(GTK_TREE_VIEW(treeview), column);
-
+   
+    
     // Column for "ID Parking"
     renderer = gtk_cell_renderer_text_new();
     column = gtk_tree_view_column_new_with_attributes("ID Parking", renderer, "text", ID_PARKING, NULL);
@@ -142,54 +143,34 @@ void afficher_agent(GtkWidget *liste) {
         return;
     }
 
-    // Optionally, set up TreeView columns
+    // Optionally, set up TreeView columns (only if needed)
     setup_treeview_columns(liste);
 
-    // Get the current number of rows in the model
-    int row_count = gtk_tree_model_iter_n_children(GTK_TREE_MODEL(store), NULL);
-    g_print("Current rows in TreeView: %d\n", row_count);
+    // Clear existing rows in the list store before adding new ones
+    gtk_list_store_clear(store);
 
-    // Read the rows from the file
-    int file_row_count = 0;
-    char lines[100][256]; // Buffer to store lines from the file
+    // Read the rows from the file and add them to the TreeView
+    char line[256];
+    while (fgets(line, sizeof(line), f)) {
+        sscanf(line, "%s %s %s %s %s %s %s %s %s %s %s %s",
+               prenom, nom, sexe, jour, mois, annee, cin, numeroTelephone, affecte, id_parking, nationalite, prefNuit);
 
-    // Read file and count rows
-    while (fgets(lines[file_row_count], sizeof(lines[file_row_count]), f)) {
-        file_row_count++;
-    }
-
-    // Now, compare the row counts and decide on adding/removing rows
-    if (file_row_count > row_count) {
-        // There are more rows in the file than the TreeView currently shows. Add new rows.
-        for (int i = row_count; i < file_row_count; i++) {
-            sscanf(lines[i], "%s %s %s %s %s %s %s %s %s %s %s %s",
-                   prenom, nom, sexe, jour, mois, annee, cin, numeroTelephone, affecte, id_parking, nationalite, prefNuit);
-
-            // Add new row to the TreeView
-            gtk_list_store_append(store, &iter);
-            gtk_list_store_set(store, &iter,
-                               0, prenom,   // Column 0: PRENOM
-                               1, nom,      // Column 1: NOM
-                               2, sexe,     // Column 2: SEXE
-                               3, jour,     // Column 3: JOUR
-                               4, mois,     // Column 4: MOIS
-                               5, annee,    // Column 5: ANNEE
-                               6, cin,      // Column 6: CIN
-                               7, numeroTelephone,   // Column 7: NUMEROTELEPHONE
-                               8, affecte,  // Column 8: AFFECTE
-                               9, id_parking,    // Column 9: ID_PARKING
-                               10, nationalite,  // Column 10: NATIONALITE
-                               11, prefNuit,     // Column 11: PREFNUIT
-                               -1);
-        }
-    }
-    else if (file_row_count < row_count) {
-        // There are fewer rows in the file than in the TreeView. Remove excess rows.
-        GtkTreeIter iter_to_remove;
-        for (int i = file_row_count; i < row_count; i++) {
-            gtk_tree_model_iter_nth_child(GTK_TREE_MODEL(store), &iter_to_remove, NULL, i);
-            gtk_list_store_remove(store, &iter_to_remove);
-        }
+        // Add new row to the TreeView
+        gtk_list_store_append(store, &iter);
+        gtk_list_store_set(store, &iter,
+                           0, nom,   
+                           1, prenom,      
+                           2, cin,     
+                           3, jour,     
+                           4, mois,     
+                           5, annee,    
+                           6, affecte,      
+                           7, id_parking,   
+                           8, sexe,  
+                           9, nationalite,   
+                           10, numeroTelephone,
+                           11, prefNuit,
+                           -1);
     }
 
     fclose(f);  // Close file after reading
@@ -197,6 +178,7 @@ void afficher_agent(GtkWidget *liste) {
     // Queue a redraw of the TreeView
     gtk_widget_queue_draw(liste);
 }
+
 
 
 
@@ -284,25 +266,24 @@ agent chercher(char * filename, int numeroAcomparer)
 }
 }
 
-int modifier( char * filename, int id )
+int modifier( char * filename, int id ,agent b)
 {
     int modificationFaite=0;
-    agent nouveauA,b;
+    agent nouveauA;
   
     FILE * f=fopen(filename, "r");
     FILE * f2=fopen("nouv.txt", "a");
     if(f!=NULL && f2!=NULL)
     {
-       while(fscanf(f,"%s %s %s %d %d %d %d %d %d %s \n",&nouveauA.nom , &nouveauA.prenom ,&nouveauA.sexe, &nouveauA.jour, &nouveauA.mois , &nouveauA.annee , &nouveauA.cin , &nouveauA.numeroTelephone,&nouveauA.affecte,&nouveauA.nationalite)!=EOF)
+        while(fscanf(f,"%s %s %s %d %d %d %d %d %d %d %s %d \n",&nouveauA.nom , &nouveauA.prenom, &nouveauA.sexe , &nouveauA.jour, &nouveauA.mois , &nouveauA.annee , &nouveauA.cin , &nouveauA.numeroTelephone,&nouveauA.affecte,&nouveauA.id_parking,&nouveauA.nationalite,&nouveauA.prefNuit)!=EOF)
         {
             if(nouveauA.cin== id)
             {
-		saisir(&b);
-                fprintf(f2,"%s %s %s %d %d %d %d %d %d %s \n",b.nom , b.prenom ,b.sexe, b.jour, b.mois , b.annee , nouveauA.cin , b.numeroTelephone,b.affecte,b.nationalite);
+                fprintf(f2,"%s %s %s %d %d %d %d %d %d %d %s %d \n",b.nom , b.prenom ,b.sexe, b.jour, b.mois , b.annee , nouveauA.cin , b.numeroTelephone,b.affecte,nouveauA.id_parking,b.nationalite,b.prefNuit);
                 modificationFaite=1;
             }
             else
-                fprintf(f2,"%s %s %s %d %d %d %d %d %s \n",nouveauA.nom , nouveauA.prenom, nouveauA.sexe , nouveauA.jour, nouveauA.mois , nouveauA.annee , nouveauA.cin , nouveauA.numeroTelephone,nouveauA.affecte,nouveauA.nationalite);
+                fprintf(f2,"%s %s %s %d %d %d %d %d %d %d %s %d \n",nouveauA.nom , nouveauA.prenom, nouveauA.sexe , nouveauA.jour, nouveauA.mois , nouveauA.annee , nouveauA.cin , nouveauA.numeroTelephone,nouveauA.affecte,nouveauA.id_parking,nouveauA.nationalite,nouveauA.prefNuit);
 
         }
     }
