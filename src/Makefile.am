@@ -12,7 +12,8 @@ parky_SOURCES = \
 	support.c support.h \
 	interface.c interface.h \
 	callbacks.c callbacks.h\
-	services.c  services.h
+	services.c  services.h \
+	agent.c agent.h
 
 parky_LDADD = @PACKAGE_LIBS@ $(INTLLIBS)
 
